@@ -13,6 +13,7 @@ import VueBindStyle from './components/practices/basic/VueBindStyle.vue'
 import VueBindShorthand from './components/practices/basic/VueBindShorthand.vue'
 import VueIf from './components/practices/basic/VueIf.vue'
 import VueShow from './components/practices/basic/VueShow.vue'
+import VueFor from './components/practices/basic/VueFor.vue'
 </script>
 
 <template>
@@ -40,5 +41,7 @@ import VueShow from './components/practices/basic/VueShow.vue'
     <VueIf />
     <hr />
     <VueShow />
+    <hr />
+    <VueFor />
   </div>
 </template>
