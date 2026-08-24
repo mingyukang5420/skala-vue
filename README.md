@@ -124,7 +124,7 @@
 
 #### 5-3. 결과화면
 
-![v-for 결과 화면](0824-06-01.png)
+![v-for 결과 화면](docs/images/0824-06-01.png)
 
 ### 6. `v-pre`, `v-cloak`, `v-once`, `v-memo`
 
