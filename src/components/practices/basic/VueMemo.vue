@@ -7,7 +7,7 @@ const age = ref(20)
 
 <template>
   <div class="practice-section">
-    <h2>v-memo 디렉티브 학습</h2>
+    <h3>v-memo 디렉티브 학습</h3>
     <div v-memo="[name]" style="padding: 20px; border: 1px solid #42b883; margin-bottom: 10px">
       <p>📦 v-memo 적용 영역 (기준: name)</p>
       <p>이름: {{ name }}</p>

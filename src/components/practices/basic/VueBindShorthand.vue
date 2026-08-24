@@ -5,7 +5,7 @@ const src = 'https://vuejs.org/images/logo.png'
 
 <template>
   <div class="practice-section">
-    <h2>v-bind 디렉티브 고급 (단축 문법)</h2>
+    <h3>v-bind 디렉티브 고급 (단축 문법)</h3>
     <div :id>
       <img :src alt="Vue 로고" style="width: 50px" />
     </div>

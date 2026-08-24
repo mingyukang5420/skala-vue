@@ -5,11 +5,11 @@ const rawHtmlData =
 
 <template>
   <div class="practice-section">
-    <h2>v-html 디렉티브 학습</h2>
-    <h3>일반 보간법 {{}} 사용 결과:</h3>
+    <h3>v-html 디렉티브 학습</h3>
+    <h4>일반 보간법 {{}} 사용 결과:</h4>
     <p>{{ rawHtmlData }}</p>
     <br />
-    <h3>v-html 디렉티브 사용 결과:</h3>
+    <h4>v-html 디렉티브 사용 결과:</h4>
     <p v-html="rawHtmlData"></p>
   </div>
 </template>
