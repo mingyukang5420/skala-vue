@@ -23,11 +23,11 @@ onMounted(() => {
 
 <template>
   <div class="practice-section">
-    <h2>Hello Skala-Vue</h2>
-    <h3>일반 변수 클릭: {{ normalCount }}</h3>
+    <h3>Hello Skala-Vue</h3>
+    <h4>일반 변수 클릭: {{ normalCount }}</h4>
     <button @click="normalCount++">일반 변수 증가</button>
     <br />
-    <h3>Vue 반응성 변수 클릭: {{ vueCount }}</h3>
+    <h4>Vue 반응성 변수 클릭: {{ vueCount }}</h4>
     <button @click="vueCount++">Vue 변수 증가</button>
   </div>
 </template>
