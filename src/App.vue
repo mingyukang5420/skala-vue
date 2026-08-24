@@ -56,5 +56,6 @@ import VueMemo from './components/practices/basic/VueMemo.vue'
 </template>
 
 <style>
+/* 교안으로 제공된 css 적용 */
 @import '@/assets/practice.css';
 </style>
