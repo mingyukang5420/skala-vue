@@ -6,6 +6,7 @@ import SampleTwo from './components/practices/basic/SampleTwo.vue'
 // 2. Vue Directive
 import VueHtml from './components/practices/basic/VueHtml.vue'
 import VueHtmlXss from './components/practices/basic/VueHtmlXss.vue'
+import VueText from './components/practices/basic/VueText.vue'
 </script>
 
 <template>
@@ -19,5 +20,7 @@ import VueHtmlXss from './components/practices/basic/VueHtmlXss.vue'
     <VueHtml />
     <hr />
     <VueHtmlXss />
+    <hr />
+    <VueText />
   </div>
 </template>
