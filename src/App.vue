@@ -54,3 +54,7 @@ import VueMemo from './components/practices/basic/VueMemo.vue'
     <VueMemo />
   </div>
 </template>
+
+<style>
+@import '@/assets/practice.css';
+</style>
