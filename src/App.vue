@@ -24,7 +24,6 @@ import EventBasic from './components/practices/basic/EventBasic.vue'
 import EventObject from './components/practices/basic/EventObject.vue'
 import EventModifier from './components/practices/basic/EventModifier.vue'
 
-
 // 4. Vue Form Handling
 import ModelBasic from './components/practices/basic/ModelBasic.vue'
 import ModelForm from './components/practices/basic/ModelForm.vue'
