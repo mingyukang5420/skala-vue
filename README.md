@@ -146,3 +146,53 @@
 #### 6-3. 결과화면
 
 ![v-pre, v-cloak, v-once, v-memo 결과 화면](docs/images/0824-07-01.png)
+
+## Vue Event Handling
+
+### 1. `v-on` 이벤트 핸들러
+
+#### 1-1. 학습목표
+
+- DOM 요소에 이벤트 리스너를 연결하여 이벤트를 감지하고 처리할 수 있다.
+
+#### 1-2. 작업 파일
+
+- src/App.vue
+- src/components/practices/basic/EventBasic.vue
+
+#### 1-3. 결과화면
+
+1. v-on 이벤트 리스너 활용
+   ![v-on basic example](docs/images/0825-01-01.png)
+
+### 2. 이벤트 객체
+
+#### 2-1. 학습목표
+
+- 사용자가 웹페이지에서 버튼을 클릭하거나, 키보드를 누르거나, 마우스를 움직이는 등의 "이벤트"를 발생시켰을 때 브라우저가 자동으로 생성하는 객체를 이용하여 이벤트를 관리할 수 있다.
+
+#### 2-2. 작업 파일
+
+- src/App.vue
+- src/components/practices/basic/EventObject.vue
+
+#### 2-3. 결과화면
+
+1. v-on 이벤트 객체 예제
+   ![v-on event object example](docs/images/0825-02-01.png)
+
+### 3. 이벤트 수식어
+
+#### 3-1. 학습목표
+
+- 이벤트 리스너의 기본 동작을 보완하거나 제어하는 데 사용되는 특수 접미어를 활용할 수 있다.
+
+#### 3-2. 작업 파일
+
+- src/App.vue
+- src/components/practices/basic/EventModifier.vue
+
+#### 3-3. 결과화면
+
+1. v-on 이벤트 수식어 예제
+   ![v-on event modifier example](docs/images/0825-03-01.png)
