@@ -247,3 +247,21 @@
 
 1. v-model Modifier
    ![v-on event modifier example](docs/images/0825-06-01.png)
+
+## Vue Style
+
+### 1. Vue Style Example
+
+#### 1-1. 학습목표
+
+- style과 style scoped의 차이점을 이해한다.
+
+#### 1-2. 작업 파일
+
+- src/App.vue
+- src/components/practices/basic/StyleScoped.vue
+
+#### 1-3. 결과화면
+
+1. style scoped 적용 예제
+   ![style scoped 적용 예제](docs/images/0825-07-01.png)
