@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
 // 4일차 API 연동을 대비한 가상의 백엔드 데이터 배열 (v-for 및 :key 실습용)
 const weatherList = ref([
@@ -25,13 +25,16 @@ const submittedQueries = ref([])
 // 검색을 한 번이라도 실행했는지 여부 (초기 빈 화면 제어용)
 const hasSearched = ref(false)
 
+// 누적된 검색어들에 매칭되는 도시 목록 (handleSearch에서 계산해 대입)
+const filteredList = ref([])
+
 // 알림 대행 함수 (window 객체 격리 우회)
 const showDetail = (cityName, status) => {
   window.alert(`${cityName}의 현재 날씨는 [${status}] 상태입니다.`)
 }
 
 // 누적된 검색어들에 매칭되는 도시를 모두 합치고, 중복은 id 기준으로 제거
-const filteredList = computed(() => {
+function computeFilteredList() {
   if (submittedQueries.value.length === 0) return []
 
   const matched = weatherList.value.filter((item) =>
@@ -41,7 +44,7 @@ const filteredList = computed(() => {
   const uniqueMap = new Map()
   matched.forEach((item) => uniqueMap.set(item.id, item))
   return Array.from(uniqueMap.values())
-})
+}
 
 // 정규식으로 한글범위 검사 후 한글이 아니면 문자삭제
 function filterKorean(e) {
@@ -58,6 +61,7 @@ function handleSearch() {
   if (!submittedQueries.value.includes(query)) {
     submittedQueries.value.push(query)
   }
+  filteredList.value = computeFilteredList()
   hasSearched.value = true
   searchQuery.value = '' // 검색 후 입력창 비우기
 }
@@ -65,6 +69,7 @@ function handleSearch() {
 // 검색 결과 초기화
 function resetSearch() {
   submittedQueries.value = []
+  filteredList.value = []
   hasSearched.value = false
 }
 </script>
@@ -74,8 +79,15 @@ function resetSearch() {
     <section class="search-box">
       <h3>🔍 도시 검색</h3>
       <div class="input-group">
-        <input type="text" class="form-control" v-model="searchQuery" @compositionend="filterKorean"
-          @blur="filterKorean" @keyup.enter="handleSearch" placeholder="검색할 도시 이름 입력" />
+        <input
+          type="text"
+          class="form-control"
+          v-model="searchQuery"
+          @compositionend="filterKorean"
+          @blur="filterKorean"
+          @keyup.enter="handleSearch"
+          placeholder="검색할 도시 이름 입력"
+        />
         <!-- <input type="text" :value="searchQuery" @input="(e) => (searchQuery = e.target.value)" placeholder="검색할 도시 이름 입력" /> -->
         <button class="btn btn-search" @click="handleSearch">검색</button>
       </div>
@@ -95,12 +107,15 @@ function resetSearch() {
         도시 이름을 입력하고 Enter를 누르면 결과가 표시됩니다.
       </p>
 
-      <p v-else-if="filteredList.length === 0" class="empty-guide">
-        검색 결과가 없습니다.
-      </p>
+      <p v-else-if="filteredList.length === 0" class="empty-guide">검색 결과가 없습니다.</p>
 
-      <div v-else v-for="item in filteredList" :key="item.id" class="weather-card"
-        @click="selectedCityInfo = `${item.name}이 선택되었습니다.`">
+      <div
+        v-else
+        v-for="item in filteredList"
+        :key="item.id"
+        class="weather-card"
+        @click="selectedCityInfo = `${item.name}이 선택되었습니다.`"
+      >
         <p class="city-title">{{ item.name }} ({{ item.status }})</p>
         <p>현재 기온: {{ item.temp }}°C</p>
 
