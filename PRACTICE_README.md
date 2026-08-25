@@ -16,11 +16,11 @@
 #### 1-3. 결과 화면
 
 1. 최초 접속
-   ![반응형 예제 초기 화면](docs/images/0824-01-01.png)
+   ![반응형 예제 초기 화면](docs/images/practice/0824-01-01.png)
 1. 일반 변수 증가 버튼 2회 클릭
-   ![반응형 예제 일반 변수 증가](docs/images/0824-01-02.png)
+   ![반응형 예제 일반 변수 증가](docs/images/practice/0824-01-02.png)
 1. 반응성 변수 증가 버튼 3회 클릭
-   ![반응형 예제 반응성 변수 증가](docs/images/0824-01-03.png)
+   ![반응형 예제 반응성 변수 증가](docs/images/practice/0824-01-03.png)
 
 <hr>
 
@@ -38,7 +38,7 @@
 #### 2-3. 결과 화면
 
 1. 자바스크립트 표현식 출력 화면
-   ![자바스크립트 표현식 출력 화면](docs/images/0824-02-01.png)
+   ![자바스크립트 표현식 출력 화면](docs/images/practice/0824-02-01.png)
 
 ## Vue Directive
 
@@ -57,7 +57,7 @@
 #### 1-3. 결과화면
 
 1. v-html, v-text 출력화면
-   ![v-html과 v-text 출력](docs/images/0824-03-01.png)
+   ![v-html과 v-text 출력](docs/images/practice/0824-03-01.png)
 
 ### 2. `v-bind`
 
@@ -78,7 +78,7 @@
 
 #### 2-3. 결과화면
 
-![v-bind 결과화면](docs/images/0824-04-01.png)
+![v-bind 결과화면](docs/images/practice/0824-04-01.png)
 
 ### 3. `v-if`, `v-else-if`, `v-else`, `v-show`
 
@@ -94,7 +94,7 @@
 
 #### 3-3. 결과화면
 
-![v-if v-show] 결과화면(docs/images/0824-05-01.png)
+![v-if v-show] 결과화면(docs/images/practice/0824-05-01.png)
 
 ### 4. `v-for`
 
@@ -109,7 +109,7 @@
 
 #### 4-3. 결과화면
 
-![v-for 결과 화면](docs/images/0824-06-01.png)
+![v-for 결과 화면](docs/images/practice/0824-06-01.png)
 
 ### 5. `v-for`
 
@@ -124,7 +124,7 @@
 
 #### 5-3. 결과화면
 
-![v-for 결과 화면](docs/images/0824-06-01.png)
+![v-for 결과 화면](docs/images/practice/0824-06-01.png)
 
 ### 6. `v-pre`, `v-cloak`, `v-once`, `v-memo`
 
@@ -145,7 +145,7 @@
 
 #### 6-3. 결과화면
 
-![v-pre, v-cloak, v-once, v-memo 결과 화면](docs/images/0824-07-01.png)
+![v-pre, v-cloak, v-once, v-memo 결과 화면](docs/images/practice/0824-07-01.png)
 
 ## Vue Event Handling
 
@@ -163,7 +163,7 @@
 #### 1-3. 결과화면
 
 1. v-on 이벤트 리스너 활용
-   ![v-on basic example](docs/images/0825-01-01.png)
+   ![v-on basic example](docs/images/practice/0825-01-01.png)
 
 ### 2. 이벤트 객체
 
@@ -179,7 +179,7 @@
 #### 2-3. 결과화면
 
 1. v-on 이벤트 객체 예제
-   ![v-on event object example](docs/images/0825-02-01.png)
+   ![v-on event object example](docs/images/practice/0825-02-01.png)
 
 ### 3. 이벤트 수식어
 
@@ -195,7 +195,7 @@
 #### 3-3. 결과화면
 
 1. v-on 이벤트 수식어 예제
-   ![v-on event modifier example](docs/images/0825-03-01.png)
+   ![v-on event modifier example](docs/images/practice/0825-03-01.png)
 
 ## Vue Form Handling
 
@@ -214,7 +214,7 @@
 #### 1-3. 결과화면
 
 1. v-model 활용 양방향 바인딩
-   ![v-model 이용한 양방향 바인딩](docs/images/0825-04-01.png)
+   ![v-model 이용한 양방향 바인딩](docs/images/practice/0825-04-01.png)
    
 ### 2. HTML의 Form 요소와 v-model 매핑
 
@@ -230,7 +230,7 @@
 #### 2-3. 결과화면
 
 1. Form 요소와 v-model 매핑
-   ![map v-model with form element](docs/images/0825-05-01.png)
+   ![map v-model with form element](docs/images/practice/0825-05-01.png)
 
 ### 3. v-model 수식어
 
@@ -246,7 +246,7 @@
 #### 3-3. 결과화면
 
 1. v-model Modifier
-   ![v-on event modifier example](docs/images/0825-06-01.png)
+   ![v-on event modifier example](docs/images/practice/0825-06-01.png)
 
 ## Vue Style
 
@@ -264,4 +264,4 @@
 #### 1-3. 결과화면
 
 1. style scoped 적용 예제
-   ![style scoped 적용 예제](docs/images/0825-07-01.png)
+   ![style scoped 적용 예제](docs/images/practice/0825-07-01.png)
