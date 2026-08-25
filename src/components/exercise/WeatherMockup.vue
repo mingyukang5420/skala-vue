@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
-// 4일차 API 연동을 대비한 가상의 백엔드 데이터 배열 (v-for 및 :key 실습용)
+// 1. [과제 요구사항] 4일차 API 연동을 대비한 가상의 백엔드 데이터 배열 (v-for 및 :key 실습용)
 const weatherList = ref([
   { id: 'city_01', name: '서울', temp: 28, status: '맑음' },
   { id: 'city_02', name: '수원', temp: 24, status: '비' },
@@ -16,24 +16,24 @@ const weatherList = ref([
   { id: 'city_11', name: '세종', temp: 27, status: '비' },
 ])
 
-// 검색어 및 알림창 제어용 데이터 (v-model 대용 한글 처리 및 이벤트 실습용)
+// 3,4. [과제 요구사항] 검색어 및 알림창 제어용 데이터 (v-model 대용 한글 처리 및 이벤트 실습용)
 const searchQuery = ref('')
 const selectedCityInfo = ref('카드를 클릭하거나 검색해 보세요.')
 
-// 엔터를 눌렀을 때 확정되는 검색어 (실제 필터링 기준)
+// 5. [추가기능] 엔터를 눌렀을 때 확정되는 검색어 (실제 필터링 기준)
 const submittedQueries = ref([])
-// 검색을 한 번이라도 실행했는지 여부 (초기 빈 화면 제어용)
+// 5. [추가기능] 검색을 한 번이라도 실행했는지 여부 (초기 빈 화면 제어용)
 const hasSearched = ref(false)
 
-// 누적된 검색어들에 매칭되는 도시 목록 (handleSearch에서 계산해 대입)
+// 5. [추가기능] 누적된 검색어들에 매칭되는 도시 목록 (handleSearch에서 계산해 대입)
 const filteredList = ref([])
 
-// 알림 대행 함수 (window 객체 격리 우회)
+// 4. [과제 요구사항] 알림 대행 함수 (window 객체 격리 우회)
 const showDetail = (cityName, status) => {
   window.alert(`${cityName}의 현재 날씨는 [${status}] 상태입니다.`)
 }
 
-// 누적된 검색어들에 매칭되는 도시를 모두 합치고, 중복은 id 기준으로 제거
+// 5. [추가기능] 누적된 검색어들에 매칭되는 도시를 모두 합치고, 중복은 id 기준으로 제거
 function computeFilteredList() {
   if (submittedQueries.value.length === 0) return []
 
@@ -46,14 +46,14 @@ function computeFilteredList() {
   return Array.from(uniqueMap.values())
 }
 
-// 정규식으로 한글범위 검사 후 한글이 아니면 문자삭제
+// 5. [추가기능] 정규식으로 한글범위 검사 후 한글이 아니면 문자삭제
 function filterKorean(e) {
   const onlyKorean = e.target.value.replace(/[^가-힣ㄱ-ㅎㅏ-ㅣ]/g, '')
   searchQuery.value = onlyKorean
   e.target.value = onlyKorean
 }
 
-// 엔터 입력 시 검색 실행
+// 5. [추가기능] 엔터 입력 시 검색 실행
 function handleSearch() {
   const query = searchQuery.value.trim()
   if (!query) return
@@ -66,7 +66,7 @@ function handleSearch() {
   searchQuery.value = '' // 검색 후 입력창 비우기
 }
 
-// 검색 결과 초기화
+// 5. [추가기능] 검색 결과 초기화
 function resetSearch() {
   submittedQueries.value = []
   filteredList.value = []
