@@ -23,6 +23,15 @@ import VueMemo from './components/practices/basic/VueMemo.vue'
 import EventBasic from './components/practices/basic/EventBasic.vue'
 import EventObject from './components/practices/basic/EventObject.vue'
 import EventModifier from './components/practices/basic/EventModifier.vue'
+
+
+// 4. Vue Form Handling
+import ModelBasic from './components/practices/basic/ModelBasic.vue'
+import ModelForm from './components/practices/basic/ModelForm.vue'
+import ModelModifier from './components/practices/basic/ModelModifier.vue'
+
+// 5. Vue Style Handling
+import StyleScoped from './components/practices/basic/StyleScoped.vue'
 </script>
 
 <template>
@@ -64,6 +73,15 @@ import EventModifier from './components/practices/basic/EventModifier.vue'
     <EventObject />
     <hr />
     <EventModifier />
+    <h2>4. Vue Form Handling</h2>
+    <ModelBasic />
+    <hr />
+    <ModelForm />
+    <hr />
+    <ModelModifier />
+    <h2>5. Vue Style Handling</h2>
+    <StyleScoped />
+    <hr />
   </div>
 </template>
 
