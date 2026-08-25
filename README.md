@@ -197,18 +197,6 @@
 1. v-on 이벤트 수식어 예제
    ![v-on event modifier example](docs/images/0825-03-01.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
 ## Vue Form Handling
 
 ### 1. `v-model` 양방향 바인딩
