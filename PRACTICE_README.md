@@ -40,6 +40,8 @@
 1. 자바스크립트 표현식 출력 화면
    ![자바스크립트 표현식 출력 화면](docs/images/practice/0824-02-01.png)
 
+<hr>
+
 ## Vue Directive
 
 ### 1. `v-html`과 `v-text`
@@ -58,6 +60,8 @@
 
 1. v-html, v-text 출력화면
    ![v-html과 v-text 출력](docs/images/practice/0824-03-01.png)
+
+<hr>
 
 ### 2. `v-bind`
 
@@ -80,6 +84,8 @@
 
 ![v-bind 결과화면](docs/images/practice/0824-04-01.png)
 
+<hr>
+
 ### 3. `v-if`, `v-else-if`, `v-else`, `v-show`
 
 #### 3-1. 학습목표
@@ -96,6 +102,8 @@
 
 ![v-if v-show] 결과화면(docs/images/practice/0824-05-01.png)
 
+<hr>
+
 ### 4. `v-for`
 
 #### 4-1. 학습목표
@@ -111,6 +119,8 @@
 
 ![v-for 결과 화면](docs/images/practice/0824-06-01.png)
 
+<hr>
+
 ### 5. `v-for`
 
 #### 5-1. 학습목표
@@ -125,6 +135,8 @@
 #### 5-3. 결과화면
 
 ![v-for 결과 화면](docs/images/practice/0824-06-01.png)
+
+<hr>
 
 ### 6. `v-pre`, `v-cloak`, `v-once`, `v-memo`
 
@@ -147,6 +159,8 @@
 
 ![v-pre, v-cloak, v-once, v-memo 결과 화면](docs/images/practice/0824-07-01.png)
 
+<hr>
+
 ## Vue Event Handling
 
 ### 1. `v-on` 이벤트 핸들러
@@ -165,6 +179,8 @@
 1. v-on 이벤트 리스너 활용
    ![v-on basic example](docs/images/practice/0825-01-01.png)
 
+<hr>
+
 ### 2. 이벤트 객체
 
 #### 2-1. 학습목표
@@ -181,6 +197,8 @@
 1. v-on 이벤트 객체 예제
    ![v-on event object example](docs/images/practice/0825-02-01.png)
 
+<hr>
+
 ### 3. 이벤트 수식어
 
 #### 3-1. 학습목표
@@ -196,6 +214,8 @@
 
 1. v-on 이벤트 수식어 예제
    ![v-on event modifier example](docs/images/practice/0825-03-01.png)
+
+<hr>
 
 ## Vue Form Handling
 
@@ -215,7 +235,9 @@
 
 1. v-model 활용 양방향 바인딩
    ![v-model 이용한 양방향 바인딩](docs/images/practice/0825-04-01.png)
-   
+
+<hr>
+
 ### 2. HTML의 Form 요소와 v-model 매핑
 
 #### 2-1. 학습목표
@@ -232,6 +254,8 @@
 1. Form 요소와 v-model 매핑
    ![map v-model with form element](docs/images/practice/0825-05-01.png)
 
+<hr>
+
 ### 3. v-model 수식어
 
 #### 3-1. 학습목표
@@ -247,6 +271,8 @@
 
 1. v-model Modifier
    ![v-on event modifier example](docs/images/practice/0825-06-01.png)
+
+<hr>
 
 ## Vue Style
 
