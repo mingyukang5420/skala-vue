@@ -196,3 +196,66 @@
 
 1. v-on 이벤트 수식어 예제
    ![v-on event modifier example](docs/images/0825-03-01.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Vue Form Handling
+
+### 1. `v-model` 양방향 바인딩
+
+#### 1-1. 학습목표
+
+- v-bind와 v-on:input을 결합하여 양방향 바인딩이 완성됨을 알 수 있다.
+- v-model을 이용하여 간단하게 양방향 바인딩을 구현할 수 있다.
+
+#### 1-2. 작업 파일
+
+- src/App.vue
+- src/components/practices/basic/ModelBasic.vue
+
+#### 1-3. 결과화면
+
+1. v-model 활용 양방향 바인딩
+   ![v-model 이용한 양방향 바인딩](docs/images/0825-04-01.png)
+   
+### 2. HTML의 Form 요소와 v-model 매핑
+
+#### 2-1. 학습목표
+
+- v-model로 양방향 바인딩을 할 때 HTML 요소의 특성 및 동작 방식과 일치하도록 ref 초기값을 선언해 두어야 예외나 의도치 않은 버그를 막을 수 있다.
+
+#### 2-2. 작업 파일
+
+- src/App.vue
+- src/components/practices/basic/ModelForm.vue
+
+#### 2-3. 결과화면
+
+1. Form 요소와 v-model 매핑
+   ![map v-model with form element](docs/images/0825-05-01.png)
+
+### 3. v-model 수식어
+
+#### 3-1. 학습목표
+
+- v-model 수식어를 이용하여 입력 요소의 동작 방식이나 수집되는 데이터 형태를 손쉽게 제어할 수 있다.
+
+#### 3-2. 작업 파일
+
+- src/App.vue
+- src/components/practices/basic/ModelModifier.vue
+
+#### 3-3. 결과화면
+
+1. v-model Modifier
+   ![v-on event modifier example](docs/images/0825-06-01.png)
