@@ -22,7 +22,7 @@
 1. 반응성 변수 증가 버튼 3회 클릭
    ![반응형 예제 반응성 변수 증가](docs/images/practice/0824-01-03.png)
 
-<hr>
+---
 
 ### 2. JavaScript 표현식을 Text Interpolation에 사용
 
@@ -40,7 +40,7 @@
 1. 자바스크립트 표현식 출력 화면
    ![자바스크립트 표현식 출력 화면](docs/images/practice/0824-02-01.png)
 
-<hr>
+---
 
 ## Vue Directive
 
@@ -61,7 +61,7 @@
 1. v-html, v-text 출력화면
    ![v-html과 v-text 출력](docs/images/practice/0824-03-01.png)
 
-<hr>
+---
 
 ### 2. `v-bind`
 
@@ -84,7 +84,7 @@
 
 ![v-bind 결과화면](docs/images/practice/0824-04-01.png)
 
-<hr>
+---
 
 ### 3. `v-if`, `v-else-if`, `v-else`, `v-show`
 
@@ -102,7 +102,7 @@
 
 ![v-if v-show] 결과화면(docs/images/practice/0824-05-01.png)
 
-<hr>
+---
 
 ### 4. `v-for`
 
@@ -119,7 +119,7 @@
 
 ![v-for 결과 화면](docs/images/practice/0824-06-01.png)
 
-<hr>
+---
 
 ### 5. `v-for`
 
@@ -136,7 +136,7 @@
 
 ![v-for 결과 화면](docs/images/practice/0824-06-01.png)
 
-<hr>
+---
 
 ### 6. `v-pre`, `v-cloak`, `v-once`, `v-memo`
 
@@ -159,7 +159,7 @@
 
 ![v-pre, v-cloak, v-once, v-memo 결과 화면](docs/images/practice/0824-07-01.png)
 
-<hr>
+---
 
 ## Vue Event Handling
 
@@ -179,7 +179,7 @@
 1. v-on 이벤트 리스너 활용
    ![v-on basic example](docs/images/practice/0825-01-01.png)
 
-<hr>
+---
 
 ### 2. 이벤트 객체
 
@@ -197,7 +197,7 @@
 1. v-on 이벤트 객체 예제
    ![v-on event object example](docs/images/practice/0825-02-01.png)
 
-<hr>
+---
 
 ### 3. 이벤트 수식어
 
@@ -215,7 +215,7 @@
 1. v-on 이벤트 수식어 예제
    ![v-on event modifier example](docs/images/practice/0825-03-01.png)
 
-<hr>
+---
 
 ## Vue Form Handling
 
@@ -236,7 +236,7 @@
 1. v-model 활용 양방향 바인딩
    ![v-model 이용한 양방향 바인딩](docs/images/practice/0825-04-01.png)
 
-<hr>
+---
 
 ### 2. HTML의 Form 요소와 v-model 매핑
 
@@ -254,7 +254,7 @@
 1. Form 요소와 v-model 매핑
    ![map v-model with form element](docs/images/practice/0825-05-01.png)
 
-<hr>
+---
 
 ### 3. v-model 수식어
 
@@ -272,7 +272,7 @@
 1. v-model Modifier
    ![v-on event modifier example](docs/images/practice/0825-06-01.png)
 
-<hr>
+---
 
 ## Vue Style
 
@@ -292,7 +292,7 @@
 1. style scoped 적용 예제
    ![style scoped 적용 예제](docs/images/practice/0825-07-01.png)
 
-<hr>
+---
 
 ## Composition API
 
@@ -313,7 +313,7 @@
 1. ref 기초 예제
    ![ref 기초 예제](docs/images/practice/0825-08-01.png)
 
-<hr>
+---
 
 ### 2. reactive() 특징과 주의점
 
@@ -332,7 +332,7 @@
 1. reactive 객체/배열 예제
    ![reactive 예제](docs/images/practice/0825-09-01.png)
 
-<hr>
+---
 
 ### 3. computed() 캐싱 동작
 
@@ -350,7 +350,7 @@
 1. computed 캐싱 비교 예제
    ![computed 캐싱 비교](docs/images/practice/0825-10-01.png)
 
-<hr>
+---
 
 ### 4. watch() 기본
 
@@ -368,7 +368,7 @@
 1. watch 기본 예제
    ![watch 기본 예제](docs/images/practice/0825-11-01.png)
 
-<hr>
+---
 
 ### 5. 여러 변수 동시 감시
 
@@ -386,7 +386,7 @@
 1. 여러 변수 동시 감시 예제
    ![여러 변수 동시 감시](docs/images/practice/0825-12-01.png)
 
-<hr>
+---
 
 ### 6. ref 객체 감시와 deep 옵션
 
@@ -405,7 +405,7 @@
 1. deep 옵션과 타겟 감시 비교
    ![deep 옵션과 타겟 감시](docs/images/practice/0825-13-01.png)
 
-<hr>
+---
 
 ### 7. reactive 데이터 watch 규칙
 
@@ -424,7 +424,7 @@
 1. reactive watch 규칙 예제
    ![reactive watch 규칙](docs/images/practice/0825-14-01.png)
 
-<hr>
+---
 
 ### 8. ref 배열의 특정 인덱스 감시
 
@@ -443,7 +443,7 @@
 1. ref 배열 인덱스 감시 예제
    ![ref 배열 인덱스 감시](docs/images/practice/0825-15-01.png)
 
-<hr>
+---
 
 ### 9. reactive 배열 감시와 스냅샷
 
@@ -462,7 +462,7 @@
 1. reactive 배열 스냅샷 감시 예제
    ![reactive 배열 스냅샷 감시](docs/images/practice/0825-16-01.png)
 
-<hr>
+---
 
 ### 10. watchEffect 자동 감시
 
@@ -481,7 +481,7 @@
 1. watchEffect 자동 감시 예제
    ![watchEffect 자동 감시](docs/images/practice/0825-17-01.png)
 
-<hr>
+---
 
 ## Vue Components
 
@@ -503,7 +503,7 @@
 1. Lifecycle Hook 예제
    ![Lifecycle Hook 예제](docs/images/practice/0826-01-01.png)
 
-<hr>
+---
 
 ### 2. Props & Emits
 
@@ -523,7 +523,7 @@
 1. Props & Emits 예제
    ![Props Emits 예제](docs/images/practice/0826-02-01.png)
 
-<hr>
+---
 
 ### 3. Default Slot
 
@@ -543,7 +543,7 @@
 1. Default Slot 예제
    ![Default Slot 예제](docs/images/practice/0826-03-01.png)
 
-<hr>
+---
 
 ### 4. Named Slot
 
@@ -562,7 +562,7 @@
 1. Named Slot 예제
    ![Named Slot 예제](docs/images/practice/0826-04-01.png)
 
-<hr>
+---
 
 ### 5. Scoped Slot
 

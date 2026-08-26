@@ -24,7 +24,7 @@
 1. 검색어 여러 개 누적하고 초기화 버튼으로 리셋
    ![검색어 누적 및 초기화](docs/images/exercise/0825-01-02.png)
 
-<hr>
+---
 
 ### 2. WeatherComposition
 
@@ -48,7 +48,7 @@
 1. 검색어 누적 및 초기화
    ![검색어 누적 및 초기화](docs/images/exercise/0825-02-03.png)
 
-<hr>
+---
 
 ### 3. WeatherParent (컴포넌트 분리)
 
@@ -74,7 +74,7 @@
 1. 도시 선택 후 일출·일몰 카드 확인
    ![일출일몰 카드](docs/images/exercise/0826-01-02.png)
 
-<hr>
+---
 
 ### 4. Weather Router
 
