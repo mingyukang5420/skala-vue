@@ -20,18 +20,23 @@ const weatherList = ref([
 const searchQuery = ref('')
 const selectedCityInfo = ref('카드를 클릭하거나 검색해 보세요.')
 
-// 3. [2일차 추가] computed를 활용한 실시간 검색 필터링 연산기 (★핵심)
-const filteredWeatherList = computed(() => {
-  // 사용자가 입력한 검색어의 앞뒤 공백을 제거합니다.
-  const query = searchQuery.value.trim()
+// 2-1. [1일차 추가기능 이식] 엔터로 확정된 검색어 누적 목록
+const submittedQueries = ref([])
 
-  // 검색어가 비어있다면 원본 weatherList를 그대로 보여줍니다.
-  if (!query) {
+// 3. [2일차 추가] computed를 활용한 검색 필터링 연산기 (누적된 확정 검색어 기준) (★핵심)
+const filteredWeatherList = computed(() => {
+  // 확정된 검색어가 하나도 없으면 원본 weatherList를 그대로 보여줍니다.
+  if (submittedQueries.value.length === 0) {
     return weatherList.value
   }
 
-  // 검색어가 포함된 도시만 칼같이 필터링하여 실시간으로 뱉어냅니다.
-  return weatherList.value.filter((item) => item.name.includes(query))
+  // 누적된 검색어들에 매칭되는 도시를 모두 합치고, 중복은 id 기준으로 제거합니다.
+  const matched = weatherList.value.filter((item) =>
+    submittedQueries.value.some((query) => item.name.includes(query)),
+  )
+  const uniqueMap = new Map()
+  matched.forEach((item) => uniqueMap.set(item.id, item))
+  return Array.from(uniqueMap.values())
 })
 
 // 4. [2일차 추가] watch를 활용한 선택 도시 추적 센서
@@ -85,20 +90,52 @@ watch(averageTemp, (newAvg, oldAvg) => {
 const showDetail = (cityName, status) => {
   window.alert(`${cityName}의 현재 날씨는 [${status}] 상태입니다.`)
 }
+
+// 8. [1일차 추가기능 이식] 정규식으로 한글범위 검사 후 한글이 아니면 문자삭제
+function filterKorean(e) {
+  const onlyKorean = e.target.value.replace(/[^가-힣ㄱ-ㅎㅏ-ㅣ]/g, '')
+  searchQuery.value = onlyKorean
+  e.target.value = onlyKorean
+}
+
+// 9. [1일차 추가기능 이식] 엔터 입력(또는 버튼 클릭) 시 검색어 확정
+function handleSearch() {
+  const query = searchQuery.value.trim()
+  if (!query) return
+  if (!submittedQueries.value.includes(query)) {
+    submittedQueries.value.push(query)
+  }
+  searchQuery.value = '' // 검색 후 입력창 비우기
+}
+
+// 10. [1일차 추가기능 이식] 확정된 검색어 초기화
+function resetSearch() {
+  submittedQueries.value = []
+}
 </script>
 
 <template>
   <div class="dashboard-wrapper">
     <section class="search-box">
       <h3>🔍 도시 검색</h3>
-      <input
-        type="text"
-        :value="searchQuery"
-        @input="(e) => (searchQuery = e.target.value)"
-        placeholder="검색할 도시 이름 입력"
-      />
-      <p>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          v-model="searchQuery"
+          @compositionend="filterKorean"
+          @blur="filterKorean"
+          @keyup.enter="handleSearch"
+          placeholder="검색할 도시 이름 입력"
+        />
+        <button class="btn btn-search" @click="handleSearch">검색</button>
+      </div>
+      <p class="query-preview">
         검색 중인 도시: <strong>{{ searchQuery }}</strong>
+      </p>
+      <p v-if="submittedQueries.length > 0" class="query-history">
+        누적 검색어: <strong>{{ submittedQueries.join(', ') }}</strong>
+        <button class="btn-reset" @click="resetSearch">초기화</button>
       </p>
     </section>
 
@@ -143,3 +180,55 @@ const showDetail = (cityName, status) => {
     </div>
   </div>
 </template>
+
+<style scoped>
+/* 입력창 + 검색 버튼을 한 줄에 배치 */
+.input-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* 기존 input 스타일(width: 90%)이 flex 안에서 남는 공간을 채우도록 재정의 */
+.input-group input {
+  flex: 1 1 auto;
+  width: auto;
+}
+
+.btn-search {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #3498db;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-search:hover {
+  background-color: #2980b9;
+}
+
+.btn-reset {
+  margin-left: 8px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: #7f8c8d;
+  background-color: transparent;
+  border: 1px solid #dcdde1;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-reset:hover {
+  color: #2c3e50;
+  border-color: #2c3e50;
+}
+
+.query-history {
+  margin-top: 8px;
+  font-size: 14px;
+}
+</style>
