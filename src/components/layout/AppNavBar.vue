@@ -4,7 +4,13 @@ import { RouterLink } from 'vue-router'
 
 <template>
   <nav class="navigation-bar">
-    <RouterLink class="nav-item" :to="{ name: 'weather-home' }">🌦️ 날씨</RouterLink>
+    <RouterLink class="nav-item" :to="{ name: 'exercise-1' }">과제1</RouterLink>
+    <span class="divider">|</span>
+    <RouterLink class="nav-item" :to="{ name: 'exercise-2' }">과제2</RouterLink>
+    <span class="divider">|</span>
+    <RouterLink class="nav-item" :to="{ name: 'exercise-3' }">과제3</RouterLink>
+    <span class="divider">|</span>
+    <RouterLink class="nav-item" :to="{ name: 'exercise-4' }">과제4</RouterLink>
     <span class="divider">|</span>
     <RouterLink class="nav-item" :to="{ name: 'practice-day1' }">Day 1</RouterLink>
     <span class="divider">|</span>
