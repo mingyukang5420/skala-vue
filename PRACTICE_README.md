@@ -291,3 +291,293 @@
 
 1. style scoped 적용 예제
    ![style scoped 적용 예제](docs/images/practice/0825-07-01.png)
+
+<hr>
+
+## Composition API
+
+### 1. ref() 기초
+
+#### 1-1. 학습목표
+
+- `ref()`로 선언한 변수는 `.value`로 읽고 쓸 수 있다는 걸 안다.
+- 문자열, 불리언, 배열, 객체 등 여러 자료형을 ref로 다뤄볼 수 있다.
+
+#### 1-2. 작업 파일
+
+- src/views/practice/Day2View.vue
+- src/components/practices/composition/ReactiveRef.vue
+
+#### 1-3. 결과화면
+
+1. ref 기초 예제
+   ![ref 기초 예제](docs/images/practice/0825-08-01.png)
+
+<hr>
+
+### 2. reactive() 특징과 주의점
+
+#### 2-1. 학습목표
+
+- `reactive()`로 객체형 상태를 선언하고 속성에 바로 접근해서 값을 바꿀 수 있다.
+- `reactive()`로 선언한 배열에 항목을 추가하거나 지울 수 있다.
+
+#### 2-2. 작업 파일
+
+- src/views/practice/Day2View.vue
+- src/components/practices/composition/ReactivePractice.vue
+
+#### 2-3. 결과화면
+
+1. reactive 객체/배열 예제
+   ![reactive 예제](docs/images/practice/0825-09-01.png)
+
+<hr>
+
+### 3. computed() 캐싱 동작
+
+#### 3-1. 학습목표
+
+- 일반 함수는 화면이 리렌더링될 때마다 매번 재실행되지만, `computed`는 의존하는 값이 실제로 바뀔 때만 재연산된다는 걸 콘솔로 직접 비교할 수 있다.
+
+#### 3-2. 작업 파일
+
+- src/views/practice/Day2View.vue
+- src/components/practices/composition/ComputedBasic.vue
+
+#### 3-3. 결과화면
+
+1. computed 캐싱 비교 예제
+   ![computed 캐싱 비교](docs/images/practice/0825-10-01.png)
+
+<hr>
+
+### 4. watch() 기본
+
+#### 4-1. 학습목표
+
+- `watch`로 특정 반응형 변수를 감시하고 이전 값과 새 값을 동시에 받아 처리할 수 있다.
+
+#### 4-2. 작업 파일
+
+- src/views/practice/Day2View.vue
+- src/components/practices/composition/WatchersBasic.vue
+
+#### 4-3. 결과화면
+
+1. watch 기본 예제
+   ![watch 기본 예제](docs/images/practice/0825-11-01.png)
+
+<hr>
+
+### 5. 여러 변수 동시 감시
+
+#### 5-1. 학습목표
+
+- 배열로 여러 개의 ref를 묶어서 `watch` 하나로 동시에 감시할 수 있다.
+
+#### 5-2. 작업 파일
+
+- src/views/practice/Day2View.vue
+- src/components/practices/composition/WatchersMulti.vue
+
+#### 5-3. 결과화면
+
+1. 여러 변수 동시 감시 예제
+   ![여러 변수 동시 감시](docs/images/practice/0825-12-01.png)
+
+<hr>
+
+### 6. ref 객체 감시와 deep 옵션
+
+#### 6-1. 학습목표
+
+- ref로 감싼 객체는 그냥 watch하면 감지가 안 된다는 걸 확인하고, `{ deep: true }`로 해결할 수 있다.
+- 화살표 함수로 특정 속성만 콕 집어 감시하면 이전 값도 정확히 추적된다는 걸 확인할 수 있다.
+
+#### 6-2. 작업 파일
+
+- src/views/practice/Day2View.vue
+- src/components/practices/composition/WatchersDeep.vue
+
+#### 6-3. 결과화면
+
+1. deep 옵션과 타겟 감시 비교
+   ![deep 옵션과 타겟 감시](docs/images/practice/0825-13-01.png)
+
+<hr>
+
+### 7. reactive 데이터 watch 규칙
+
+#### 7-1. 학습목표
+
+- `reactive()`로 만든 객체는 변수명 그대로 watch해도 deep 감시가 자동으로 걸리지만, 이전 값도 같이 바뀌어버리는 함정이 있다는 걸 확인할 수 있다.
+- 화살표 함수로 특정 속성만 감시하면 진짜 과거 값을 보존할 수 있다.
+
+#### 7-2. 작업 파일
+
+- src/views/practice/Day2View.vue
+- src/components/practices/composition/WatchersReactive.vue
+
+#### 7-3. 결과화면
+
+1. reactive watch 규칙 예제
+   ![reactive watch 규칙](docs/images/practice/0825-14-01.png)
+
+<hr>
+
+### 8. ref 배열의 특정 인덱스 감시
+
+#### 8-1. 학습목표
+
+- ref 배열의 특정 인덱스를 화살표 함수로 감시할 수 있다.
+- 배열 요소가 객체일 때는 `{ deep: true }`가 없으면 내부 속성 변화가 감지되지 않는다는 걸 확인할 수 있다.
+
+#### 8-2. 작업 파일
+
+- src/views/practice/Day2View.vue
+- src/components/practices/composition/WatchersRefArray.vue
+
+#### 8-3. 결과화면
+
+1. ref 배열 인덱스 감시 예제
+   ![ref 배열 인덱스 감시](docs/images/practice/0825-15-01.png)
+
+<hr>
+
+### 9. reactive 배열 감시와 스냅샷
+
+#### 9-1. 학습목표
+
+- reactive 배열을 그대로 watch하면 이전 배열과 현재 배열이 같이 바뀌어버리는 문제를 확인할 수 있다.
+- 전개 연산자로 스냅샷(복사본)을 만들어 감시하면 과거 배열 상태를 제대로 보존할 수 있다.
+
+#### 9-2. 작업 파일
+
+- src/views/practice/Day2View.vue
+- src/components/practices/composition/WatchersReactiveArray.vue
+
+#### 9-3. 결과화면
+
+1. reactive 배열 스냅샷 감시 예제
+   ![reactive 배열 스냅샷 감시](docs/images/practice/0825-16-01.png)
+
+<hr>
+
+### 10. watchEffect 자동 감시
+
+#### 10-1. 학습목표
+
+- `watchEffect`는 감시 대상을 따로 지정하지 않아도 콜백 안에서 참조한 반응형 변수를 자동으로 추적한다는 걸 확인할 수 있다.
+- 화면이 처음 켜질 때도 1번은 즉시 실행된다는 특징을 확인할 수 있다.
+
+#### 10-2. 작업 파일
+
+- src/views/practice/Day2View.vue
+- src/components/practices/composition/WatchersWatchEffect.vue
+
+#### 10-3. 결과화면
+
+1. watchEffect 자동 감시 예제
+   ![watchEffect 자동 감시](docs/images/practice/0825-17-01.png)
+
+<hr>
+
+## Vue Components
+
+### 1. Lifecycle Hook
+
+#### 1-1. 학습목표
+
+- `onMounted`, `onUpdated`, `onUnmounted` 훅이 각각 어느 시점에 실행되는지 콘솔로 확인할 수 있다.
+- 컴포넌트가 사라질 때 타이머 같은 자원을 정리하지 않으면 메모리 누수가 생긴다는 걸 확인하고, `onUnmounted`에서 직접 정리할 수 있다.
+
+#### 1-2. 작업 파일
+
+- src/views/practice/Day3View.vue
+- src/components/practices/component/LifecycleParent.vue
+- src/components/practices/component/LifecycleChild.vue
+
+#### 1-3. 결과화면
+
+1. Lifecycle Hook 예제
+   ![Lifecycle Hook 예제](docs/images/practice/0826-01-01.png)
+
+<hr>
+
+### 2. Props & Emits
+
+#### 2-1. 학습목표
+
+- `defineProps`로 부모의 데이터를 자식이 전달받을 수 있다.
+- `defineEmits`로 자식에서 부모로 커스텀 이벤트를 발생시켜서 데이터를 되돌려줄 수 있다.
+
+#### 2-2. 작업 파일
+
+- src/views/practice/Day3View.vue
+- src/components/practices/component/PropsEmitsParent.vue
+- src/components/practices/component/PropsEmitsChild.vue
+
+#### 2-3. 결과화면
+
+1. Props & Emits 예제
+   ![Props Emits 예제](docs/images/practice/0826-02-01.png)
+
+<hr>
+
+### 3. Default Slot
+
+#### 3-1. 학습목표
+
+- `slot`으로 자식 컴포넌트 내부에 부모가 원하는 마크업을 그대로 주입할 수 있다.
+- 슬롯에 아무것도 안 넣으면 자식이 정의해둔 기본 콘텐츠가 대신 보인다는 걸 확인할 수 있다.
+
+#### 3-2. 작업 파일
+
+- src/views/practice/Day3View.vue
+- src/components/practices/component/SlotDefaultParent.vue
+- src/components/practices/component/SlotDefaultChild.vue
+
+#### 3-3. 결과화면
+
+1. Default Slot 예제
+   ![Default Slot 예제](docs/images/practice/0826-03-01.png)
+
+<hr>
+
+### 4. Named Slot
+
+#### 4-1. 학습목표
+
+- 슬롯이 여러 개 필요할 때 `v-slot:이름`(또는 `#이름`)으로 위치를 지정해서 나눠 넣을 수 있다.
+
+#### 4-2. 작업 파일
+
+- src/views/practice/Day3View.vue
+- src/components/practices/component/SlotNamedParent.vue
+- src/components/practices/component/SlotNamedChild.vue
+
+#### 4-3. 결과화면
+
+1. Named Slot 예제
+   ![Named Slot 예제](docs/images/practice/0826-04-01.png)
+
+<hr>
+
+### 5. Scoped Slot
+
+#### 5-1. 학습목표
+
+- 자식 컴포넌트가 갖고 있는 데이터를 `slot` 바인딩으로 부모에게 역으로 전달할 수 있다.
+- `v-slot="변수명"`으로 자식이 넘겨준 데이터를 부모 템플릿에서 받아 쓸 수 있다.
+
+#### 5-2. 작업 파일
+
+- src/views/practice/Day3View.vue
+- src/components/practices/component/SlotScopedParent.vue
+- src/components/practices/component/SlotScopedChild.vue
+
+#### 5-3. 결과화면
+
+1. Scoped Slot 예제
+   ![Scoped Slot 예제](docs/images/practice/0826-05-01.png)
