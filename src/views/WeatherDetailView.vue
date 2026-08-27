@@ -1,36 +1,62 @@
 <script setup>
-import { computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import BaseDashboardCard from '@/components/exercise/BaseDashboardCard.vue'
 import { useConfigStore } from '@/stores/configStore'
 import { useFavoriteStore } from '@/stores/favoriteStore'
 import starOffIcon from '@/assets/icons/star-off.svg'
 import starOnIcon from '@/assets/icons/star-on.svg'
+import { fetchCurrentWeather, formatUnixToLocalTime } from '@/services/weatherApi'
 
 const route = useRoute()
 const configStore = useConfigStore()
 const favoriteStore = useFavoriteStore()
 
-// 이 뷰는 과제4/과제5가 같이 쓰기 때문에, 돌아가기 링크는 현재 라우트 기준으로 맞는 홈으로 이동
+// 이 뷰는 과제4/과제5/과제6이 같이 쓰기 때문에, 돌아가기 링크는 현재 라우트 기준으로 맞는 홈으로 이동
 const homeRouteName = computed(() => route.name?.replace('-detail', '-home'))
 
-// 4일차: 도시 코드에 해당하는 Mock Data (Router 동적 경로 매칭 실습용)
-const weatherList = [
-  { id: 'city_01', name: '서울', temp: 28, status: '맑음', sunrise: '05:32', sunset: '19:47' },
-  { id: 'city_02', name: '수원', temp: 24, status: '비', sunrise: '05:33', sunset: '19:48' },
-  { id: 'city_03', name: '부산', temp: 26, status: '구름', sunrise: '05:25', sunset: '19:38' },
-  { id: 'city_04', name: '성남', temp: 32, status: '맑음', sunrise: '05:32', sunset: '19:47' },
-  { id: 'city_05', name: '제주', temp: 31, status: '비', sunrise: '05:38', sunset: '19:35' },
-  { id: 'city_06', name: '울산', temp: 28, status: '구름', sunrise: '05:24', sunset: '19:37' },
-  { id: 'city_07', name: '대전', temp: 25, status: '맑음', sunrise: '05:31', sunset: '19:44' },
-  { id: 'city_08', name: '대구', temp: 29, status: '비', sunrise: '05:27', sunset: '19:40' },
-  { id: 'city_09', name: '광주', temp: 23, status: '구름', sunrise: '05:33', sunset: '19:42' },
-  { id: 'city_10', name: '인천', temp: 22, status: '맑음', sunrise: '05:34', sunset: '19:49' },
-  { id: 'city_11', name: '세종', temp: 27, status: '비', sunrise: '05:31', sunset: '19:45' },
-]
+// 6일차: 위경도 레지스트리 (OpenWeatherMap 호출용, WeatherRouterHomeView와 동일 좌표 유지)
+const cityRegistry = {
+  city_01: { name: '서울', lat: 37.5665, lon: 126.978 },
+  city_02: { name: '수원', lat: 37.2636, lon: 127.0286 },
+  city_03: { name: '부산', lat: 35.1796, lon: 129.0756 },
+  city_04: { name: '성남', lat: 37.4201, lon: 127.1265 },
+  city_05: { name: '제주', lat: 33.4996, lon: 126.5312 },
+  city_06: { name: '울산', lat: 35.5384, lon: 129.3114 },
+  city_07: { name: '대전', lat: 36.3504, lon: 127.3845 },
+  city_08: { name: '대구', lat: 35.8714, lon: 128.6014 },
+  city_09: { name: '광주', lat: 35.1595, lon: 126.8526 },
+  city_10: { name: '인천', lat: 37.4563, lon: 126.7052 },
+  city_11: { name: '세종', lat: 36.4801, lon: 127.289 },
+}
 
-// Mount 시점에 route.params.cityId 기반으로 도시 객체 선택
-const cityItem = computed(() => weatherList.find((item) => item.id === route.params.cityId) ?? null)
+const cityItem = ref(null)
+const isLoading = ref(true)
+
+onMounted(async () => {
+  const id = route.params.cityId
+  const target = cityRegistry[id]
+  if (!target) {
+    isLoading.value = false
+    return
+  }
+
+  try {
+    const data = await fetchCurrentWeather(id, target.lat, target.lon)
+    cityItem.value = {
+      id,
+      name: target.name,
+      temp: data.main.temp,
+      status: data.weather[0].description,
+      sunrise: formatUnixToLocalTime(data.sys.sunrise, data.timezone),
+      sunset: formatUnixToLocalTime(data.sys.sunset, data.timezone),
+    }
+  } catch (error) {
+    console.error(`🔴 [${target.name}] 상세 날씨 데이터 로딩 실패:`, error)
+  } finally {
+    isLoading.value = false
+  }
+})
 
 // 5일차: configStore 단위 설정에 맞춰 기온 변환
 const displayTemp = computed(() => {
@@ -46,7 +72,11 @@ const isFavorite = computed(() => favoriteStore.favoriteCityId === cityItem.valu
 
 <template>
   <div class="dashboard-wrapper">
-    <BaseDashboardCard v-if="!cityItem">
+    <BaseDashboardCard v-if="isLoading">
+      <p class="empty-guide">🔄 실시간 기상 데이터를 불러오는 중입니다...</p>
+    </BaseDashboardCard>
+
+    <BaseDashboardCard v-else-if="!cityItem">
       <p class="empty-guide">🤔 존재하지 않는 도시 코드입니다: {{ route.params.cityId }}</p>
     </BaseDashboardCard>
 
