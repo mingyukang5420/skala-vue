@@ -49,6 +49,28 @@ const router = createRouter({
       ],
     },
     {
+      path: '/exercise/5',
+      name: 'exercise-5',
+      component: () => import('../views/exercise/Exercise5View.vue'),
+      children: [
+        {
+          path: '',
+          name: 'exercise-5-home',
+          component: () => import('../views/WeatherRouterHomeView.vue'),
+        },
+        {
+          path: 'about',
+          name: 'exercise-5-about',
+          component: () => import('../views/WeatherAboutView.vue'),
+        },
+        {
+          path: 'weather/:cityId',
+          name: 'exercise-5-detail',
+          component: () => import('../views/WeatherDetailView.vue'),
+        },
+      ],
+    },
+    {
       path: '/practice',
       redirect: { name: 'practice-day1' },
     },
