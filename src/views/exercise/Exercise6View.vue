@@ -5,7 +5,7 @@ import UnitToggler from '@/components/exercise/UnitToggler.vue'
 
 <template>
   <div class="app-container">
-    <h1>⛅ 과제 4~6: Weather App (Router·Pinia·Axios)</h1>
+    <h1>⛅ 과제 4~7: Weather App (Router·Pinia·Axios·UI Library)</h1>
     <hr />
     <div class="dashboard-wrapper">
       <nav class="weather-sub-nav">
