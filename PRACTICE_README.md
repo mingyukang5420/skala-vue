@@ -637,7 +637,7 @@
 #### 2-3. 결과화면
 
 1. Axios JSON CRUD 예제
-   ![Axios JSON CRUD 예제](docs/images/practice/0827-02-02.png)
+   ![Axios JSON CRUD 예제](docs/images/practice/0827-03-01.png)
 
 ---
 
@@ -657,7 +657,7 @@
 #### 1-3. 결과화면
 
 1. 회원가입 Form 예제 — 이메일 형식/약관 동의 검증
-   ![회원가입 Form 예제](docs/images/practice/0827-03-01.png)
+   ![회원가입 Form 예제](docs/images/practice/0827-04-01.png)
 
 ### 2. 커머스 상품 수량 및 평점 시스템
 
@@ -673,7 +673,7 @@
 #### 2-3. 결과화면
 
 1. 커머스 수량/평점 예제
-   ![커머스 수량 평점 예제](docs/images/practice/0827-03-02.png)
+   ![커머스 수량 평점 예제](docs/images/practice/0827-05-01.png)
 
 ### 3. 시스템 피드백 & 프로그레스 인터랙션
 
@@ -689,7 +689,7 @@
 #### 3-3. 결과화면
 
 1. 삭제 확인 + 프로그레스바 예제
-   ![삭제 확인 프로그레스바 예제](docs/images/practice/0827-03-03.png)
+   ![삭제 확인 프로그레스바 예제](docs/images/practice/0827-06-01.png)
 
 ---
 
@@ -713,4 +713,4 @@
 #### 1-3. 결과화면
 
 1. Prettier 정리된 코드 + 모드별 API URL 표시
-   ![Vite 환경변수 예제](docs/images/practice/0827-03-04.png)
+   ![Vite 환경변수 예제](docs/images/practice/0827-07-01.png)
