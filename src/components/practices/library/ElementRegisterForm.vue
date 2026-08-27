@@ -13,7 +13,7 @@ const handleRegister = () => {
     return
   }
   if (!userForm.value.agree) {
-    ElMessage.warning('⚠️ 이용약관에 동의하셔야 합니다.')
+    ElMessage.warning('⚠ 이용약관에 동의하셔야 합니다.')
     return
   }
   ElMessage.success('🎉 가입 신청이 정상적으로 완료되었습니다!')

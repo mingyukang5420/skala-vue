@@ -96,7 +96,7 @@ function handleToggleFavorite() {
         <button class="btn-favorite" @click.stop="handleToggleFavorite">
           <img :src="isFavorite ? starOnIcon : starOffIcon" class="star-icon" alt="즐겨찾기" />
         </button>
-        🏙️ {{ cityItem.name }} 상세 기상관측 정보
+        🏙 {{ cityItem.name }} 상세 기상관측 정보
       </h3>
       <p>
         현재 기온: <strong>{{ displayTemp }}{{ configStore.unitSymbol }}</strong>
@@ -105,7 +105,7 @@ function handleToggleFavorite() {
         날씨 상태: <strong>{{ cityItem.status }}</strong>
       </p>
       <el-tag v-if="cityItem.temp >= 25" type="danger">🔥 더움 (25도 이상)</el-tag>
-      <el-tag v-else type="info">❄️ 선선함 (25도 미만)</el-tag>
+      <el-tag v-else type="info">❄ 선선함 (25도 미만)</el-tag>
       <p class="sun-line">
         🌅 일출: <strong>{{ cityItem.sunrise }}</strong>
       </p>

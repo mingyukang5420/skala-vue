@@ -17,7 +17,7 @@ defineProps({
         🌇 일몰: <strong>{{ cityItem.sunset }}</strong>
       </p>
     </template>
-    <p v-else class="empty-guide">도시를 선택하면 일출·일몰 시간이 표시됩니다. ☀️</p>
+    <p v-else class="empty-guide">도시를 선택하면 일출·일몰 시간이 표시됩니다. ☀</p>
   </div>
 </template>
 

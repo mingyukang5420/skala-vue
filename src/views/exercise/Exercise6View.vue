@@ -11,7 +11,7 @@ import UnitToggler from '@/components/exercise/UnitToggler.vue'
       <nav class="weather-sub-nav">
         <RouterLink :to="{ name: 'exercise-6-home' }">🏠 대시보드</RouterLink>
         <span class="divider">|</span>
-        <RouterLink :to="{ name: 'exercise-6-about' }">ℹ️ 소개</RouterLink>
+        <RouterLink :to="{ name: 'exercise-6-about' }">ℹ 소개</RouterLink>
         <UnitToggler />
       </nav>
       <main>

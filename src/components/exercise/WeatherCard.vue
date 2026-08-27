@@ -44,7 +44,7 @@ const emit = defineEmits(['select-card', 'click-detail'])
     <p>현재 기온: {{ displayTemp }}{{ configStore.unitSymbol }}</p>
 
     <el-tag v-if="cityItem.temp >= 25" type="danger">🔥 더움 (25도 이상)</el-tag>
-    <el-tag v-else type="info">❄️ 선선함 (25도 미만)</el-tag>
+    <el-tag v-else type="info">❄ 선선함 (25도 미만)</el-tag>
 
     <el-button
       class="btn-detail"

@@ -12,7 +12,7 @@ const homeRouteName = computed(() => route.name?.replace('-about', '-home'))
 <template>
   <div class="dashboard-wrapper">
     <BaseDashboardCard>
-      <h3>ℹ️ 서비스 소개</h3>
+      <h3>ℹ 서비스 소개</h3>
       <p>
         본 대시보드는 SKALA Full-Stack Engineering Vue.js 과정의 "날씨" 실습 과제입니다. 가상의
         도시별 날씨 데이터를 검색하고, 도시를 선택해 상세 기상관측 정보(일출·일몰 포함)를 확인할 수

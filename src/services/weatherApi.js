@@ -30,21 +30,21 @@ export async function fetchCurrentWeather(cityId, lat, lon) {
 }
 
 const WEATHER_STATUS_MAP = {
-  Clear: '☀️ 맑음',
-  Clouds: '☁️ 구름',
-  Rain: '🌧️ 비',
-  Drizzle: '🌦️ 이슬비',
-  Thunderstorm: '⛈️ 뇌우',
-  Snow: '❄️ 눈',
-  Mist: '🌫️ 안개',
-  Smoke: '🌫️ 연무',
-  Haze: '🌫️ 실안개',
-  Dust: '🌪️ 황사',
-  Fog: '🌫️ 안개',
-  Sand: '🌪️ 황사',
+  Clear: '☀ 맑음',
+  Clouds: '☁ 구름',
+  Rain: '🌧 비',
+  Drizzle: '🌦 이슬비',
+  Thunderstorm: '⛈ 뇌우',
+  Snow: '❄ 눈',
+  Mist: '🌫 안개',
+  Smoke: '🌫 연무',
+  Haze: '🌫 실안개',
+  Dust: '🌪 황사',
+  Fog: '🌫 안개',
+  Sand: '🌪 황사',
   Ash: '🌋 화산재',
   Squall: '💨 돌풍',
-  Tornado: '🌪️ 토네이도',
+  Tornado: '🌪 토네이도',
 }
 
 export function mapWeatherStatus(main) {
