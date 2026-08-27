@@ -71,6 +71,28 @@ const router = createRouter({
       ],
     },
     {
+      path: '/exercise/6',
+      name: 'exercise-6',
+      component: () => import('../views/exercise/Exercise6View.vue'),
+      children: [
+        {
+          path: '',
+          name: 'exercise-6-home',
+          component: () => import('../views/WeatherRouterHomeView.vue'),
+        },
+        {
+          path: 'about',
+          name: 'exercise-6-about',
+          component: () => import('../views/WeatherAboutView.vue'),
+        },
+        {
+          path: 'weather/:cityId',
+          name: 'exercise-6-detail',
+          component: () => import('../views/WeatherDetailView.vue'),
+        },
+      ],
+    },
+    {
       path: '/practice',
       redirect: { name: 'practice-day1' },
     },
