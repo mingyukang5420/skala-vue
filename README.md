@@ -147,3 +147,84 @@
    ![화씨 단위 변경](docs/images/exercise/0827-01-03.png)
 1. 상세 페이지에서 즐겨찾기 토글 + 단위 변환 적용
    ![상세 페이지 즐겨찾기](docs/images/exercise/0827-01-04.png)
+
+### 6. Weather Axios
+
+#### 6-1. 학습 목표
+
+- axios로 OpenWeatherMap 현재 날씨 API를 호출해 실제 데이터를 대시보드·상세페이지에 적용할 수 있다.
+- localStorage 캐싱(10분 TTL)으로 같은 도시를 반복 호출하지 않도록 최적화할 수 있다.
+- OpenWeatherMap의 다른 API(Weather Map 타일)를 추가로 활용해 기능을 확장할 수 있다.
+- (추가) API 응답의 `weather[0].main`(영문 enum)을 이모지+한글로 매핑해서 표시했다.
+- (추가) 본인만의 추가 외부 API로 Nager.Date 공휴일 API를 붙여서 "오늘/다음 공휴일" 기반 B2B 운영 참고 배너를 만들었다 (캡쳐용 시뮬레이션 토글 포함).
+- (추가) 과제4·5가 과제6과 화면 파일을 전부 공유하게 되면서 굳이 따로 유지할 이유가 없어져, 과제4·5는 과제6으로 리다이렉트하고 화면을 하나로 합쳤다.
+
+#### 6-2. 작업 파일
+
+- src/services/weatherApi.js
+- src/components/exercise/WeatherMapSection.vue
+- src/views/WeatherRouterHomeView.vue
+- src/views/WeatherDetailView.vue
+- src/views/exercise/Exercise6View.vue
+- src/router/index.js
+- .env.example
+
+#### 6-3. 결과 화면
+
+1. 과제6 대시보드 — 실제 날씨 데이터 + 날씨상태 이모지
+   ![과제6 대시보드](docs/images/exercise/0827-02-01.png)
+1. 날씨 지도(강수/구름/기온 레이어 전환) + 도시 마커
+   ![날씨 지도](docs/images/exercise/0827-02-02.png)
+1. 공휴일 배너
+   ![공휴일 배너](docs/images/exercise/0827-02-03.png)
+1. 상세 페이지 실제 데이터
+   ![상세 페이지 실제 데이터](docs/images/exercise/0827-02-04.png)
+
+### 7. Weather UI Library
+
+#### 7-1. 학습 목표
+
+- 외부 UI 라이브러리(Element Plus)를 설치하고 전역 등록해서 기존 weather 앱에 자유롭게 적용할 수 있다.
+- `el-input`, `el-button`, `el-tag` 등으로 직접 만든 검색창·버튼·배지를 대체해서 일관된 디자인 시스템을 적용할 수 있다.
+- `ElMessage`로 사용자 액션(즐겨찾기 등록/해제)에 즉각적인 토스트 피드백을 줄 수 있다.
+- (추가) 과제4~6이 전부 같은 화면 파일을 공유하는 구조라, UI 라이브러리 적용도 자연스럽게 과제4~7 전체에 한 번에 반영된다. 타이틀도 "과제 4~7"로 갱신했다.
+
+#### 7-2. 작업 파일
+
+- src/main.js
+- src/components/exercise/SearchBar.vue
+- src/components/exercise/WeatherCard.vue
+- src/components/exercise/UnitToggler.vue
+- src/views/WeatherDetailView.vue
+- src/views/exercise/Exercise6View.vue
+- src/components/layout/AppNavBar.vue
+
+#### 7-3. 결과 화면
+
+1. Element Plus가 적용된 대시보드 — el-tag 배지, el-button, el-input 검색창
+   ![Element Plus 대시보드](docs/images/exercise/0827-03-01.png)
+1. 즐겨찾기 등록 시 ElMessage 토스트
+   ![즐겨찾기 토스트](docs/images/exercise/0827-03-02.png)
+
+### 8. Vite Build & Deployment
+
+#### 8-1. 학습 목표
+
+- ESLint로 제출 과제에 에러가 없도록 점검할 수 있다.
+- API 키를 환경변수로 분리해서 Git에 올라가지 않도록 관리할 수 있다.
+- 프로젝트를 빌드해서 정적 파일로 만들고, 실제 서버(GitHub Pages)에 호스팅해서 확인할 수 있다.
+- (추가) `.env.staging`/`.env.production`으로 모드별 빌드(`vite build --mode staging`)를 실습하고, `import.meta.env.VITE_API_URL` 값이 모드에 따라 바뀌는 걸 직접 확인했다.
+
+#### 8-2. 작업 파일
+
+- `.env.example`, `.env.production`, `.env.staging` (실제 `.env`는 git에 올라가지 않음)
+- `.github/workflows/deploy.yml`
+- `vite.config.js`
+
+#### 8-3. 결과 화면
+
+이 요구사항은 새 코드를 추가한 게 아니라 지금까지의 배포 파이프라인이 이미 충족하고 있다는 걸 확인한 것이라 별도 캡쳐 없이 아래로 정리한다.
+
+- `npm run lint` 실행 결과: 0 error / 0 warning
+- `.env`(API 키 원본)는 `.gitignore`에 포함되어 있어 git에 올라가지 않음, `.env.example`만 커밋됨
+- `npm run build`로 빌드한 정적 파일이 GitHub Actions(`.github/workflows/deploy.yml`)를 통해 GitHub Pages에 자동 배포되어 실제 서비스 중: <https://mingyukang5420.github.io/skala-vue/>
