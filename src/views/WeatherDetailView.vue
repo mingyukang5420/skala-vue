@@ -75,8 +75,8 @@ function handleToggleFavorite() {
   favoriteStore.toggleFavorite(cityItem.value.id)
   ElMessage.success(
     willBeFavorite
-      ? `⭐ ${cityItem.value.name} 즐겨찾기 등록`
-      : `☆ ${cityItem.value.name} 즐겨찾기 해제`,
+      ? `${cityItem.value.name} 즐겨찾기 등록`
+      : `${cityItem.value.name} 즐겨찾기 해제`,
   )
 }
 </script>
