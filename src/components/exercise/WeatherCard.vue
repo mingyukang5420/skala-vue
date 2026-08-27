@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue'
+import { ElMessage } from 'element-plus'
 import { useConfigStore } from '@/stores/configStore'
 import { useFavoriteStore } from '@/stores/favoriteStore'
 import starOffIcon from '@/assets/icons/star-off.svg'
@@ -10,6 +11,16 @@ const favoriteStore = useFavoriteStore()
 const props = defineProps({ cityItem: { type: Object, required: true } })
 
 const isFavorite = computed(() => favoriteStore.favoriteCityId === props.cityItem.id)
+
+function handleToggleFavorite() {
+  const willBeFavorite = favoriteStore.favoriteCityId !== props.cityItem.id
+  favoriteStore.toggleFavorite(props.cityItem.id)
+  ElMessage.success(
+    willBeFavorite
+      ? `⭐ ${props.cityItem.name} 즐겨찾기 등록`
+      : `☆ ${props.cityItem.name} 즐겨찾기 해제`,
+  )
+}
 
 const displayTemp = computed(() => {
   const rawTemp = props.cityItem.temp
@@ -25,19 +36,24 @@ const emit = defineEmits(['select-card', 'click-detail'])
 <template>
   <div class="weather-card" @click="emit('select-card', cityItem)">
     <h4>
-      <button class="btn-favorite" @click.stop="favoriteStore.toggleFavorite(cityItem.id)">
+      <button class="btn-favorite" @click.stop="handleToggleFavorite">
         <img :src="isFavorite ? starOnIcon : starOffIcon" class="star-icon" alt="즐겨찾기" />
       </button>
       {{ cityItem.name }} ({{ cityItem.status }})
     </h4>
     <p>현재 기온: {{ displayTemp }}{{ configStore.unitSymbol }}</p>
 
-    <span v-if="cityItem.temp >= 25" class="badge hot">🔥 더움 (25도 이상)</span>
-    <span v-else class="badge cool">❄️ 선선함 (25도 미만)</span>
+    <el-tag v-if="cityItem.temp >= 25" type="danger">🔥 더움 (25도 이상)</el-tag>
+    <el-tag v-else type="info">❄️ 선선함 (25도 미만)</el-tag>
 
-    <button class="btn-detail" @click.stop="emit('click-detail', cityItem.name, cityItem.status)">
+    <el-button
+      class="btn-detail"
+      size="small"
+      type="primary"
+      @click.stop="emit('click-detail', cityItem.name, cityItem.status)"
+    >
       상세보기
-    </button>
+    </el-button>
   </div>
 </template>
 
@@ -51,25 +67,10 @@ const emit = defineEmits(['select-card', 'click-detail'])
   cursor: pointer;
   position: relative;
 }
-.badge {
-  display: inline-block;
-  padding: 4px 8px;
-  font-size: 12px;
-  border-radius: 4px;
-  color: #fff;
-}
-.hot {
-  background-color: #ff7675;
-}
-.cool {
-  background-color: #74b9ff;
-}
 .btn-detail {
   position: absolute;
   right: 12px;
   top: 15px;
-  padding: 6px 10px;
-  cursor: pointer;
 }
 .btn-favorite {
   background: none;
