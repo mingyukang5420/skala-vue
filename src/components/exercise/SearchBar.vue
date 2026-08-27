@@ -24,24 +24,24 @@ function filterKorean(e) {
   <div class="search-inner">
     <h3>🔍 도시 검색</h3>
     <div class="input-group">
-      <input
-        type="text"
-        class="form-control"
-        :value="currentQuery"
-        @input="emit('update-query', $event.target.value)"
+      <el-input
+        :model-value="currentQuery"
+        placeholder="검색할 도시 이름 입력"
+        @input="(val) => emit('update-query', val)"
         @compositionend="filterKorean"
         @blur="filterKorean"
         @keyup.enter="emit('submit-query')"
-        placeholder="검색할 도시 이름 입력"
-      />
-      <button class="btn-search" @click="emit('submit-query')">검색</button>
+      >
+        <template #prefix>🔍</template>
+      </el-input>
+      <el-button class="btn-search" type="primary" @click="emit('submit-query')">검색</el-button>
     </div>
     <p class="query-preview">
       검색 중인 도시: <strong>{{ currentQuery }}</strong>
     </p>
     <p v-if="submittedQueries.length > 0" class="query-history">
       누적 검색어: <strong>{{ submittedQueries.join(', ') }}</strong>
-      <button class="btn-reset" @click="emit('reset-query')">초기화</button>
+      <el-button class="btn-reset" size="small" text @click="emit('reset-query')">초기화</el-button>
     </p>
   </div>
 </template>
@@ -53,41 +53,12 @@ function filterKorean(e) {
   align-items: center;
 }
 
-.input-group input {
-  flex: 1 1 auto;
-  width: auto;
-}
-
 .btn-search {
-  padding: 8px 14px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #3498db;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
   white-space: nowrap;
-}
-
-.btn-search:hover {
-  background-color: #2980b9;
 }
 
 .btn-reset {
   margin-left: 8px;
-  padding: 4px 10px;
-  font-size: 12px;
-  color: #7f8c8d;
-  background-color: transparent;
-  border: 1px solid #dcdde1;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn-reset:hover {
-  color: #2c3e50;
-  border-color: #2c3e50;
 }
 
 .query-history {
