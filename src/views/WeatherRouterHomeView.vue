@@ -8,7 +8,12 @@ import SunriseSunsetCard from '@/components/exercise/SunriseSunsetCard.vue'
 import WeatherMapSection from '@/components/exercise/WeatherMapSection.vue'
 import { useConfigStore } from '@/stores/configStore'
 import { useFavoriteStore } from '@/stores/favoriteStore'
-import { fetchCurrentWeather, fetchHolidays, formatUnixToLocalTime, mapWeatherStatus } from '@/services/weatherApi'
+import {
+  fetchCurrentWeather,
+  fetchHolidays,
+  formatUnixToLocalTime,
+  mapWeatherStatus,
+} from '@/services/weatherApi'
 
 const router = useRouter()
 const route = useRoute()
@@ -20,17 +25,116 @@ const detailRouteName = computed(() => route.name?.replace('-home', '-detail'))
 
 // 6일차 추가: 위경도만 고정 등록해두고, 실제 기온/날씨상태/일출·일몰은 OpenWeatherMap에서 받아온다
 const weatherList = ref([
-  { id: 'city_01', name: '서울', lat: 37.5665, lon: 126.978, temp: null, status: '', sunrise: '', sunset: '' },
-  { id: 'city_02', name: '수원', lat: 37.2636, lon: 127.0286, temp: null, status: '', sunrise: '', sunset: '' },
-  { id: 'city_03', name: '부산', lat: 35.1796, lon: 129.0756, temp: null, status: '', sunrise: '', sunset: '' },
-  { id: 'city_04', name: '성남', lat: 37.4201, lon: 127.1265, temp: null, status: '', sunrise: '', sunset: '' },
-  { id: 'city_05', name: '제주', lat: 33.4996, lon: 126.5312, temp: null, status: '', sunrise: '', sunset: '' },
-  { id: 'city_06', name: '울산', lat: 35.5384, lon: 129.3114, temp: null, status: '', sunrise: '', sunset: '' },
-  { id: 'city_07', name: '대전', lat: 36.3504, lon: 127.3845, temp: null, status: '', sunrise: '', sunset: '' },
-  { id: 'city_08', name: '대구', lat: 35.8714, lon: 128.6014, temp: null, status: '', sunrise: '', sunset: '' },
-  { id: 'city_09', name: '광주', lat: 35.1595, lon: 126.8526, temp: null, status: '', sunrise: '', sunset: '' },
-  { id: 'city_10', name: '인천', lat: 37.4563, lon: 126.7052, temp: null, status: '', sunrise: '', sunset: '' },
-  { id: 'city_11', name: '세종', lat: 36.4801, lon: 127.289, temp: null, status: '', sunrise: '', sunset: '' },
+  {
+    id: 'city_01',
+    name: '서울',
+    lat: 37.5665,
+    lon: 126.978,
+    temp: null,
+    status: '',
+    sunrise: '',
+    sunset: '',
+  },
+  {
+    id: 'city_02',
+    name: '수원',
+    lat: 37.2636,
+    lon: 127.0286,
+    temp: null,
+    status: '',
+    sunrise: '',
+    sunset: '',
+  },
+  {
+    id: 'city_03',
+    name: '부산',
+    lat: 35.1796,
+    lon: 129.0756,
+    temp: null,
+    status: '',
+    sunrise: '',
+    sunset: '',
+  },
+  {
+    id: 'city_04',
+    name: '성남',
+    lat: 37.4201,
+    lon: 127.1265,
+    temp: null,
+    status: '',
+    sunrise: '',
+    sunset: '',
+  },
+  {
+    id: 'city_05',
+    name: '제주',
+    lat: 33.4996,
+    lon: 126.5312,
+    temp: null,
+    status: '',
+    sunrise: '',
+    sunset: '',
+  },
+  {
+    id: 'city_06',
+    name: '울산',
+    lat: 35.5384,
+    lon: 129.3114,
+    temp: null,
+    status: '',
+    sunrise: '',
+    sunset: '',
+  },
+  {
+    id: 'city_07',
+    name: '대전',
+    lat: 36.3504,
+    lon: 127.3845,
+    temp: null,
+    status: '',
+    sunrise: '',
+    sunset: '',
+  },
+  {
+    id: 'city_08',
+    name: '대구',
+    lat: 35.8714,
+    lon: 128.6014,
+    temp: null,
+    status: '',
+    sunrise: '',
+    sunset: '',
+  },
+  {
+    id: 'city_09',
+    name: '광주',
+    lat: 35.1595,
+    lon: 126.8526,
+    temp: null,
+    status: '',
+    sunrise: '',
+    sunset: '',
+  },
+  {
+    id: 'city_10',
+    name: '인천',
+    lat: 37.4563,
+    lon: 126.7052,
+    temp: null,
+    status: '',
+    sunrise: '',
+    sunset: '',
+  },
+  {
+    id: 'city_11',
+    name: '세종',
+    lat: 36.4801,
+    lon: 127.289,
+    temp: null,
+    status: '',
+    sunrise: '',
+    sunset: '',
+  },
 ])
 
 const isLoadingWeather = ref(true)
@@ -39,10 +143,13 @@ const isSimulatingHoliday = ref(false)
 
 const todayIso = new Date().toISOString().slice(0, 10)
 
-const todayHoliday = computed(() => holidayList.value.find((holiday) => holiday.date === todayIso) ?? null)
+const todayHoliday = computed(
+  () => holidayList.value.find((holiday) => holiday.date === todayIso) ?? null,
+)
 
 const nextHoliday = computed(
-  () => holidayList.value.find((holiday) => holiday.date >= todayIso) ?? holidayList.value[0] ?? null,
+  () =>
+    holidayList.value.find((holiday) => holiday.date >= todayIso) ?? holidayList.value[0] ?? null,
 )
 
 // 6일차 추가: 실제로 오늘이 공휴일일 때만 배너가 뜨는데, 데모/캡쳐를 위해 실제 다음 공휴일 데이터로 "오늘이라고 가정"해보는 시뮬레이션 토글도 같이 둔다

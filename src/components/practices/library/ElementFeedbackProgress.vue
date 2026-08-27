@@ -43,7 +43,10 @@ const startDownload = () => {
         <el-button type="danger" plain @click="confirmDelete">🗑️ 서버 파일 삭제 테스트</el-button>
         <el-button type="primary" @click="startDownload">💾 데이터 동기화 시작</el-button>
       </div>
-      <el-progress :percentage="downloadProgress" :status="downloadProgress >= 100 ? 'success' : ''" />
+      <el-progress
+        :percentage="downloadProgress"
+        :status="downloadProgress >= 100 ? 'success' : ''"
+      />
     </el-card>
   </div>
 </template>

@@ -146,7 +146,11 @@ function resetSearch() {
         📊 선택한 도시 평균 기온: <strong>{{ averageTemp }}°C</strong>
         <span v-if="selectedCities.length > 0">({{ selectedCities.length }}개 도시 선택됨)</span>
       </p>
-      <p v-if="heatAlertMessage" class="badge hot" style="display: inline-block; margin-bottom: 10px">
+      <p
+        v-if="heatAlertMessage"
+        class="badge hot"
+        style="display: inline-block; margin-bottom: 10px"
+      >
         {{ heatAlertMessage }}
       </p>
 

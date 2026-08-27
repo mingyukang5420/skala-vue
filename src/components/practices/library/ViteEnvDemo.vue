@@ -16,11 +16,16 @@ console.log('현재 모드의 API URL:', apiUrl)
     <h2>⚡ Prettier 포맷팅 + 환경변수(.env) 모드별 빌드</h2>
     <el-card>
       <p class="label">npm run format 실행 후 정리된 코드:</p>
-      <pre class="code-block">const myRegion = `{{ myRegion }}`
-const regionGreeting = `{{ regionGreeting }}`</pre>
+      <pre class="code-block">
+const myRegion = `{{ myRegion }}`
+const regionGreeting = `{{ regionGreeting }}`</pre
+      >
       <p class="label">현재 모드의 import.meta.env.VITE_API_URL:</p>
       <p class="api-url">
-        {{ apiUrl ?? '(비어있음 — dev 모드는 .env.staging/.env.production을 안 읽는다. 아래 빌드 명령으로 직접 확인)' }}
+        {{
+          apiUrl ??
+          '(비어있음 — dev 모드는 .env.staging/.env.production을 안 읽는다. 아래 빌드 명령으로 직접 확인)'
+        }}
       </p>
       <p class="hint">
         <code>npm run build:staging</code>(vite build --mode staging)으로 빌드하면 위 값이

@@ -16,6 +16,8 @@ const configStore = useConfigStore()
     <span
       >날씨단위: <strong>{{ configStore.unit === 'celsius' ? '섭씨(℃)' : '화씨(℉)' }}</strong></span
     >
-    <el-button round size="small" type="primary" @click="configStore.toggleUnit">단위변경</el-button>
+    <el-button round size="small" type="primary" @click="configStore.toggleUnit"
+      >단위변경</el-button
+    >
   </div>
 </template>

@@ -98,15 +98,25 @@ function handleToggleFavorite() {
         </button>
         🏙️ {{ cityItem.name }} 상세 기상관측 정보
       </h3>
-      <p>현재 기온: <strong>{{ displayTemp }}{{ configStore.unitSymbol }}</strong></p>
-      <p>날씨 상태: <strong>{{ cityItem.status }}</strong></p>
+      <p>
+        현재 기온: <strong>{{ displayTemp }}{{ configStore.unitSymbol }}</strong>
+      </p>
+      <p>
+        날씨 상태: <strong>{{ cityItem.status }}</strong>
+      </p>
       <el-tag v-if="cityItem.temp >= 25" type="danger">🔥 더움 (25도 이상)</el-tag>
       <el-tag v-else type="info">❄️ 선선함 (25도 미만)</el-tag>
-      <p class="sun-line">🌅 일출: <strong>{{ cityItem.sunrise }}</strong></p>
-      <p class="sun-line">🌇 일몰: <strong>{{ cityItem.sunset }}</strong></p>
+      <p class="sun-line">
+        🌅 일출: <strong>{{ cityItem.sunrise }}</strong>
+      </p>
+      <p class="sun-line">
+        🌇 일몰: <strong>{{ cityItem.sunset }}</strong>
+      </p>
     </BaseDashboardCard>
 
-    <RouterLink class="back-link" :to="{ name: homeRouteName }">← 메인 대시보드로 돌아가기</RouterLink>
+    <RouterLink class="back-link" :to="{ name: homeRouteName }"
+      >← 메인 대시보드로 돌아가기</RouterLink
+    >
   </div>
 </template>
 
