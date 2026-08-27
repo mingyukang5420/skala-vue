@@ -6,7 +6,7 @@ import { useConfigStore } from '@/stores/configStore'
 import { useFavoriteStore } from '@/stores/favoriteStore'
 import starOffIcon from '@/assets/icons/star-off.svg'
 import starOnIcon from '@/assets/icons/star-on.svg'
-import { fetchCurrentWeather, formatUnixToLocalTime } from '@/services/weatherApi'
+import { fetchCurrentWeather, formatUnixToLocalTime, mapWeatherStatus } from '@/services/weatherApi'
 
 const route = useRoute()
 const configStore = useConfigStore()
@@ -47,7 +47,7 @@ onMounted(async () => {
       id,
       name: target.name,
       temp: data.main.temp,
-      status: data.weather[0].description,
+      status: mapWeatherStatus(data.weather[0].main),
       sunrise: formatUnixToLocalTime(data.sys.sunrise, data.timezone),
       sunset: formatUnixToLocalTime(data.sys.sunset, data.timezone),
     }
