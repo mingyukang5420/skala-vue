@@ -86,6 +86,7 @@
 - catch-all 라우트로 존재하지 않는 경로에 404 페이지를 띄울 수 있다.
 - 라우트 컴포넌트를 지연 로딩(`() => import(...)`)으로 불러올 수 있다.
 - (추가) 과제1~4를 전부 한 페이지에 쌓아두니까 너무 지저분해져서, practice의 Day1~4처럼 `/exercise/1`~`/exercise/4`로 아예 페이지를 나눠버렸다.
+- (추가) 과제4·과제5가 화면 파일(`WeatherDetailView`, `WeatherRouterHomeView`)을 공유하다 보니, 뒤로가기·상세보기가 항상 과제4로만 이동하던 버그가 있었다. `route.name` 값을 기준으로 목적지 라우트 이름을 동적으로 계산하도록 고쳐서, 과제4·과제5 어느 쪽에서 들어가도 같은 화면 안에서 이동하게 만들었다.
 
 #### 4-2. 작업 파일
 
@@ -109,3 +110,38 @@
    ![소개 페이지](docs/images/exercise/0826-02-03.png)
 1. 존재하지 않는 경로 접속 시 404 페이지
    ![404 페이지](docs/images/exercise/0826-02-04.png)
+
+### 5. Weather Store (Pinia)
+
+#### 5-1. 학습 목표
+
+- Pinia의 setup 스토어 문법(`defineStore` + `ref`/`computed`/함수)으로 상태·게터·액션 역할을 나눠서 정의할 수 있다.
+- 전역 스토어(`configStore`)로 단위(섭씨/화씨) 설정을 관리하고 `UnitToggler` 컴포넌트에서 어디서든 꺼내 쓸 수 있다.
+- 메인 대시보드와 상세 페이지 양쪽에서 같은 스토어 값을 참조해 기온 표시 단위를 일관되게 바꿀 수 있다.
+- (추가) 본인만의 스토어로 "즐겨찾기 도시" 기능을 만들었다. 도시는 딱 하나만 등록할 수 있고, 검색 결과와 무관하게 항상 대시보드 최상단에 고정 표시된다.
+- (추가) 즐겨찾기 버튼을 이모지 대신 직접 그린 SVG 별 아이콘(선택/미선택 두 종류)으로 교체했다.
+- (추가) `WeatherCard`, `WeatherDetailView`, `WeatherRouterHomeView`는 과제4·과제5가 함께 쓰는 파일이라서, 단위 변환·즐겨찾기 기능을 구현하고 나니 과제4 화면에서도 똑같이 단위변경 버튼과 즐겨찾기 별 아이콘이 그대로 보인다.
+
+#### 5-2. 작업 파일
+
+- src/stores/configStore.js
+- src/stores/favoriteStore.js
+- src/components/exercise/UnitToggler.vue
+- src/views/exercise/Exercise5View.vue
+- src/components/exercise/WeatherCard.vue
+- src/views/WeatherDetailView.vue
+- src/views/WeatherRouterHomeView.vue
+- src/router/index.js
+- src/assets/icons/star-on.svg
+- src/assets/icons/star-off.svg
+
+#### 5-3. 결과 화면
+
+1. 과제5 대시보드 — 단위변경 버튼과 즐겨찾기 안내 문구
+   ![과제5 대시보드](docs/images/exercise/0827-01-01.png)
+1. 도시 즐겨찾기 등록 후 상단에 고정 표시
+   ![즐겨찾기 고정 표시](docs/images/exercise/0827-01-02.png)
+1. 화씨로 단위 변경 시 즐겨찾기 표시도 함께 바뀜
+   ![화씨 단위 변경](docs/images/exercise/0827-01-03.png)
+1. 상세 페이지에서 즐겨찾기 토글 + 단위 변환 적용
+   ![상세 페이지 즐겨찾기](docs/images/exercise/0827-01-04.png)
