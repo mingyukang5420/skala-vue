@@ -1,5 +1,17 @@
 # skala-vue 과제 작성
 
+## 목차
+
+- [weather 앱 구현](#weather-앱-구현)
+  1. [WeatherMockup](#1-weathermockup)
+  2. [WeatherComposition](#2-weathercomposition)
+  3. [WeatherParent (컴포넌트 분리)](#3-weatherparent-컴포넌트-분리)
+  4. [Weather Router](#4-weather-router)
+  5. [Weather Store (Pinia)](#5-weather-store-pinia)
+  6. [Weather Axios](#6-weather-axios)
+  7. [Weather UI Library](#7-weather-ui-library)
+  8. [Vite Build & Deployment](#8-vite-build--deployment)
+
 ## weather 앱 구현
 
 ### 1. WeatherMockup
