@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import StoreCounter from '@/components/practices/library/StoreCounter.vue'
+import AxiosWeather from '@/components/practices/library/AxiosWeather.vue'
+import AxiosJson from '@/components/practices/library/AxiosJson.vue'
 </script>
 
 <template>
@@ -8,5 +10,10 @@ import StoreCounter from '@/components/practices/library/StoreCounter.vue'
     <h2>1. Store</h2>
     <hr />
     <StoreCounter />
+
+    <h2>2. Axios</h2>
+    <hr />
+    <AxiosWeather />
+    <AxiosJson />
   </div>
 </template>
