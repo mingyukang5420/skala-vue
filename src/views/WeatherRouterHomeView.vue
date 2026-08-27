@@ -8,7 +8,7 @@ import SunriseSunsetCard from '@/components/exercise/SunriseSunsetCard.vue'
 import WeatherMapSection from '@/components/exercise/WeatherMapSection.vue'
 import { useConfigStore } from '@/stores/configStore'
 import { useFavoriteStore } from '@/stores/favoriteStore'
-import { fetchCurrentWeather, fetchHolidays, formatUnixToLocalTime } from '@/services/weatherApi'
+import { fetchCurrentWeather, fetchHolidays, formatUnixToLocalTime, mapWeatherStatus } from '@/services/weatherApi'
 
 const router = useRouter()
 const route = useRoute()
@@ -63,7 +63,7 @@ async function loadWeatherData() {
       try {
         const data = await fetchCurrentWeather(city.id, city.lat, city.lon)
         city.temp = data.main.temp
-        city.status = data.weather[0].description
+        city.status = mapWeatherStatus(data.weather[0].main)
         city.sunrise = formatUnixToLocalTime(data.sys.sunrise, data.timezone)
         city.sunset = formatUnixToLocalTime(data.sys.sunset, data.timezone)
       } catch (error) {
