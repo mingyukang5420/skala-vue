@@ -1,5 +1,12 @@
 <script setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 import BaseDashboardCard from '@/components/exercise/BaseDashboardCard.vue'
+
+const route = useRoute()
+
+// 이 뷰는 여러 과제 라우트가 공유하기 때문에, 뒤로가기 링크는 현재 라우트 기준으로 맞는 홈으로 이동
+const homeRouteName = computed(() => route.name?.replace('-about', '-home'))
 </script>
 
 <template>
@@ -14,7 +21,7 @@ import BaseDashboardCard from '@/components/exercise/BaseDashboardCard.vue'
       <p>Composition API, 컴포넌트 분리, Vue Router 동적 라우팅까지 단계별로 적용한 실습 결과물입니다.</p>
     </BaseDashboardCard>
 
-    <RouterLink class="back-link" :to="{ name: 'exercise-4-home' }">← 메인 대시보드로 돌아가기</RouterLink>
+    <RouterLink class="back-link" :to="{ name: homeRouteName }">← 메인 대시보드로 돌아가기</RouterLink>
   </div>
 </template>
 
