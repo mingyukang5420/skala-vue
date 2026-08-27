@@ -32,7 +32,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <h3>⏱ 라이프사이클 훅 흐름 탐색기</h3>
+  <h3>⏱️ 라이프사이클 훅 흐름 탐색기</h3>
   <div class="counter-display">
     <p>실시간 타이머 카운트: {{ count }}</p>
     <button @click="count++">수동으로 숫자 올리기</button>

@@ -39,10 +39,10 @@ const handleFetchWeather = async () => {
         📍 위치: <strong>{{ weatherData.name }}</strong>
       </p>
       <p>
-        🌡 현재 기온: <strong>{{ weatherData.main.temp }}°C</strong> (정상 섭씨 변환 완료)
+        🌡️ 현재 기온: <strong>{{ weatherData.main.temp }}°C</strong> (정상 섭씨 변환 완료)
       </p>
       <p>
-        ☁ 날씨 상태: <strong>{{ weatherData.weather[0].description }}</strong>
+        ☁️ 날씨 상태: <strong>{{ weatherData.weather[0].description }}</strong>
       </p>
       <p>
         💧 습도: <strong>{{ weatherData.main.humidity }}%</strong>

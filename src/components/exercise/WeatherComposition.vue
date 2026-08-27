@@ -42,7 +42,7 @@ const filteredWeatherList = computed(() => {
 // 4. [2일차 추가] watch를 활용한 선택 도시 추적 센서
 // selectedCityInfo의 문구 변화를 감시하여 후속 로그를 처리합니다.
 watch(selectedCityInfo, (newInfo) => {
-  console.log(`👁🗨 [watch 감지] 상태 바 문구가 업데이트되었습니다 -> "${newInfo}"`)
+  console.log(`👁️‍🗨️ [watch 감지] 상태 바 문구가 업데이트되었습니다 -> "${newInfo}"`)
 })
 
 // 5. [2일차 추가] watchEffect를 활용한 자동 의존성 API 로그 시뮬레이션
@@ -78,7 +78,7 @@ watch(averageTemp, (newAvg, oldAvg) => {
   const wasHot = oldAvg >= 28
   const isHot = newAvg >= 28
   if (isHot && !wasHot) {
-    heatAlertMessage.value = `🌡 평균 기온이 ${newAvg}°C로 폭염 수준에 진입했습니다!`
+    heatAlertMessage.value = `🌡️ 평균 기온이 ${newAvg}°C로 폭염 수준에 진입했습니다!`
     console.log(`🔥 [watch 감지] 평균 기온 폭염 진입: ${newAvg}°C`)
   } else if (!isHot && wasHot) {
     heatAlertMessage.value = ''
@@ -140,7 +140,7 @@ function resetSearch() {
     </section>
 
     <section class="list-box">
-      <h3>🏙 지역별 날씨 현황</h3>
+      <h3>🏙️ 지역별 날씨 현황</h3>
 
       <p class="avg-temp-line">
         📊 선택한 도시 평균 기온: <strong>{{ averageTemp }}°C</strong>
@@ -164,7 +164,7 @@ function resetSearch() {
         <p>현재 기온: {{ item.temp }}°C</p>
 
         <span v-if="item.temp >= 25" class="badge hot">🔥 더움 (25도 이상)</span>
-        <span v-else class="badge cool">❄ 선선함 (25도 미만)</span>
+        <span v-else class="badge cool">❄️ 선선함 (25도 미만)</span>
 
         <button class="btn-detail" @click.stop="showDetail(item.name, item.status)">
           상세보기

@@ -18,7 +18,7 @@ watch(
   () => [...cityList],
   (newArr, oldArr) => {
     // 🔥 구조 분해 복사본을 감시하므로 과거 배열의 원본 데이터와 길이가 그대로 살아있습니다.
-    logCopy.value = `[스냅샷 감시] 진짜 과거 길이:${oldArr.length} (데이터: ${oldArr}) ➡ 바뀐 길이:${newArr.length}`
+    logCopy.value = `[스냅샷 감시] 진짜 과거 길이:${oldArr.length} (데이터: ${oldArr}) ➡️ 바뀐 길이:${newArr.length}`
   },
 )
 </script>
@@ -34,7 +34,7 @@ watch(
     <button @click="cityList.pop()">최근 도시 삭제 (pop)</button>
 
     <div class="monitor auto">
-      <h3>👁🗨 1) cityList 변수명 쌩으로 감시</h3>
+      <h3>👁️‍🗨️ 1) cityList 변수명 쌩으로 감시</h3>
       <p>{{ logAuto }}</p>
       <small>※ 주의: 이전 배열과 현재 배열의 내용물/길이가 똑같이 동기화되어 버립니다.</small>
     </div>

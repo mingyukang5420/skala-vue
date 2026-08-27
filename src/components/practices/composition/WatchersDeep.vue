@@ -25,7 +25,7 @@ watch(
 watch(
   () => user.value.age,
   (newAge, oldAge) => {
-    logTarget.value = `[타겟 감지] 나이가 ${oldAge}세 ➡ ${newAge}세로 변경됨!`
+    logTarget.value = `[타겟 감지] 나이가 ${oldAge}세 ➡️ ${newAge}세로 변경됨!`
   },
 )
 </script>
@@ -33,13 +33,13 @@ watch(
 <template>
   <div class="practice-section">
     <h2>ref 객체/배열 감시</h2>
-    <h3>👨💻 회원 데이터 조작 panel</h3>
+    <h3>👨‍💻 회원 데이터 조작 panel</h3>
     <p>이름: {{ user.name }} / 나이: {{ user.age }}세</p>
     <button @click="user.name = '이순신'">이름만 변경</button> &nbsp;
     <button @click="user.age++">나이만 변경 (age++)</button>
 
     <div class="monitor">
-      <p>👁🗨 1) deep: true 모니터 (전체 감시)</p>
+      <p>👁️‍🗨️ 1) deep: true 모니터 (전체 감시)</p>
       <p>{{ logDeep }}</p>
     </div>
 
