@@ -13,7 +13,7 @@ import { RouterLink } from 'vue-router'
     <!-- exercise-6는 children(home/about/detail)을 가진 부모 라우트라, 부모 이름으로 이동하면
          Vue Router가 기본 자식(exercise-6-home)을 matched에 안 넣어서 대시보드 탭이 active로 안 잡힘.
          진입하자마자 대시보드가 active로 보이는 게 UX상 맞다고 판단해서 자식 라우트 이름으로 직접 연결함. -->
-    <RouterLink class="nav-item" :to="{ name: 'exercise-6-home' }">과제4-6</RouterLink>
+    <RouterLink class="nav-item" :to="{ name: 'exercise-6-home' }">과제4-7</RouterLink>
     <span class="divider">|</span>
     <RouterLink class="nav-item" :to="{ name: 'practice-day1' }">Day 1</RouterLink>
     <span class="divider">|</span>
