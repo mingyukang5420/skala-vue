@@ -12,6 +12,8 @@ import { RouterLink } from 'vue-router'
     <span class="divider">|</span>
     <RouterLink class="nav-item" :to="{ name: 'exercise-4' }">과제4</RouterLink>
     <span class="divider">|</span>
+    <RouterLink class="nav-item" :to="{ name: 'exercise-5' }">과제5</RouterLink>
+    <span class="divider">|</span>
     <RouterLink class="nav-item" :to="{ name: 'practice-day1' }">Day 1</RouterLink>
     <span class="divider">|</span>
     <RouterLink class="nav-item" :to="{ name: 'practice-day2' }">Day 2</RouterLink>
