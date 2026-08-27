@@ -2,8 +2,17 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import BaseDashboardCard from '@/components/exercise/BaseDashboardCard.vue'
+import { useConfigStore } from '@/stores/configStore'
+import { useFavoriteStore } from '@/stores/favoriteStore'
+import starOffIcon from '@/assets/icons/star-off.svg'
+import starOnIcon from '@/assets/icons/star-on.svg'
 
 const route = useRoute()
+const configStore = useConfigStore()
+const favoriteStore = useFavoriteStore()
+
+// 이 뷰는 과제4/과제5가 같이 쓰기 때문에, 돌아가기 링크는 현재 라우트 기준으로 맞는 홈으로 이동
+const homeRouteName = computed(() => route.name?.replace('-detail', '-home'))
 
 // 4일차: 도시 코드에 해당하는 Mock Data (Router 동적 경로 매칭 실습용)
 const weatherList = [
@@ -22,6 +31,17 @@ const weatherList = [
 
 // Mount 시점에 route.params.cityId 기반으로 도시 객체 선택
 const cityItem = computed(() => weatherList.find((item) => item.id === route.params.cityId) ?? null)
+
+// 5일차: configStore 단위 설정에 맞춰 기온 변환
+const displayTemp = computed(() => {
+  const rawTemp = cityItem.value?.temp
+  if (configStore.unit === 'fahrenheit') {
+    return Math.round((rawTemp * 9) / 5 + 32)
+  }
+  return rawTemp
+})
+
+const isFavorite = computed(() => favoriteStore.favoriteCityId === cityItem.value?.id)
 </script>
 
 <template>
@@ -31,8 +51,13 @@ const cityItem = computed(() => weatherList.find((item) => item.id === route.par
     </BaseDashboardCard>
 
     <BaseDashboardCard v-else>
-      <h3>🏙️ {{ cityItem.name }} 상세 기상관측 정보</h3>
-      <p>현재 기온: <strong>{{ cityItem.temp }}°C</strong></p>
+      <h3>
+        <button class="btn-favorite" @click.stop="favoriteStore.toggleFavorite(cityItem.id)">
+          <img :src="isFavorite ? starOnIcon : starOffIcon" class="star-icon" alt="즐겨찾기" />
+        </button>
+        🏙️ {{ cityItem.name }} 상세 기상관측 정보
+      </h3>
+      <p>현재 기온: <strong>{{ displayTemp }}{{ configStore.unitSymbol }}</strong></p>
       <p>날씨 상태: <strong>{{ cityItem.status }}</strong></p>
       <span v-if="cityItem.temp >= 25" class="badge hot">🔥 더움 (25도 이상)</span>
       <span v-else class="badge cool">❄️ 선선함 (25도 미만)</span>
@@ -40,7 +65,7 @@ const cityItem = computed(() => weatherList.find((item) => item.id === route.par
       <p class="sun-line">🌇 일몰: <strong>{{ cityItem.sunset }}</strong></p>
     </BaseDashboardCard>
 
-    <RouterLink class="back-link" :to="{ name: 'exercise-4-home' }">← 메인 대시보드로 돌아가기</RouterLink>
+    <RouterLink class="back-link" :to="{ name: homeRouteName }">← 메인 대시보드로 돌아가기</RouterLink>
   </div>
 </template>
 
@@ -80,5 +105,18 @@ const cityItem = computed(() => weatherList.find((item) => item.id === route.par
 }
 .back-link:hover {
   text-decoration: underline;
+}
+.btn-favorite {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+.star-icon {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
 }
 </style>
