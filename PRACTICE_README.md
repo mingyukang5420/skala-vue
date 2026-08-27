@@ -581,3 +581,24 @@
 
 1. Scoped Slot 예제
    ![Scoped Slot 예제](docs/images/practice/0826-05-01.png)
+
+---
+
+## Pinia Store
+
+### 1. Counter Store
+
+#### 1-1. 학습목표
+
+- Pinia의 setup 스토어 문법으로 상태(`count`)·게터(`doubleCount`)·액션(`increment`)을 정의하고 컴포넌트에서 꺼내 쓸 수 있다.
+
+#### 1-2. 작업 파일
+
+- src/stores/counter.js
+- src/components/practices/library/StoreCounter.vue
+- src/views/practice/Day4View.vue
+
+#### 1-3. 결과화면
+
+1. Store 실습 화면 — 카운트 증가/2배 값 확인
+   ![Store 실습 화면](docs/images/practice/0827-01-01.png)
