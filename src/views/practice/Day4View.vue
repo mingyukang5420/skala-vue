@@ -1,6 +1,12 @@
+<script setup lang="ts">
+import StoreCounter from '@/components/practices/library/StoreCounter.vue'
+</script>
+
 <template>
   <div class="practice-container">
-    <h1>Day 4</h1>
-    <p>준비중입니다. 추후 실습 내용이 추가될 예정입니다.</p>
+    <h1>Day 4 - Store 실습</h1>
+    <h2>1. Store</h2>
+    <hr />
+    <StoreCounter />
   </div>
 </template>
