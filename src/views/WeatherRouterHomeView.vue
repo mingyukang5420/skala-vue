@@ -23,7 +23,7 @@ const favoriteStore = useFavoriteStore()
 // 이 뷰는 과제4/과제5가 같이 쓰기 때문에, 상세 페이지 이동은 현재 라우트 기준으로 맞는 곳으로
 const detailRouteName = computed(() => route.name?.replace('-home', '-detail'))
 
-// 6일차 추가: 위경도만 고정 등록해두고, 실제 기온/날씨상태/일출·일몰은 OpenWeatherMap에서 받아온다
+// 6일차 추가: 위경도만 고정 등록해두고, 실제 기온/날씨상태/일출/일몰은 OpenWeatherMap에서 받아온다
 const weatherList = ref([
   {
     id: 'city_01',
@@ -155,7 +155,7 @@ const nextHoliday = computed(
 // 6일차 추가: 실제로 오늘이 공휴일일 때만 배너가 뜨는데, 데모/캡쳐를 위해 실제 다음 공휴일 데이터로 "오늘이라고 가정"해보는 시뮬레이션 토글도 같이 둔다
 const holidayMessage = computed(() => {
   if (todayHoliday.value) {
-    return `📅 오늘은 공휴일(${todayHoliday.value.localName})입니다 — 매장 방문객 변동에 대비해 인력배치를 참고하세요.`
+    return `📅 오늘은 공휴일(${todayHoliday.value.localName})입니다 - 매장 방문객 변동에 대비해 인력배치를 참고하세요.`
   }
   if (isSimulatingHoliday.value && nextHoliday.value) {
     return `📅 (시뮬레이션: '${nextHoliday.value.localName}'을 오늘이라고 가정) 매장 방문객 변동에 대비해 인력배치를 참고하세요.`
@@ -290,7 +290,7 @@ function resetSearch() {
     <BaseDashboardCard>
       <h3>⭐ 즐겨찾기 도시</h3>
       <p v-if="favoriteCity" class="favorite-line">
-        {{ favoriteCity.name }} ({{ favoriteCity.status }}) —
+        {{ favoriteCity.name }} ({{ favoriteCity.status }}) -
         <strong>{{ favoriteDisplayTemp }}{{ configStore.unitSymbol }}</strong>
       </p>
       <p v-else class="favorite-line empty-guide">
@@ -323,7 +323,7 @@ function resetSearch() {
     </BaseDashboardCard>
 
     <BaseDashboardCard>
-      <h3>🌅 일출 · 일몰 시간</h3>
+      <h3>🌅 일출/일몰 시간</h3>
       <SunriseSunsetCard :city-item="selectedCity" />
     </BaseDashboardCard>
 

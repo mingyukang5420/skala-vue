@@ -24,7 +24,7 @@ const regionGreeting = `{{ regionGreeting }}`</pre
       <p class="api-url">
         {{
           apiUrl ??
-          '(비어있음 — dev 모드는 .env.staging/.env.production을 안 읽는다. 아래 빌드 명령으로 직접 확인)'
+          '(비어있음 - dev 모드는 .env.staging/.env.production을 안 읽는다. 아래 빌드 명령으로 직접 확인)'
         }}
       </p>
       <p class="hint">
