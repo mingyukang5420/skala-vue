@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { ElMessage } from 'element-plus'
 import BaseDashboardCard from '@/components/exercise/BaseDashboardCard.vue'
 import { useConfigStore } from '@/stores/configStore'
 import { useFavoriteStore } from '@/stores/favoriteStore'
@@ -68,6 +69,16 @@ const displayTemp = computed(() => {
 })
 
 const isFavorite = computed(() => favoriteStore.favoriteCityId === cityItem.value?.id)
+
+function handleToggleFavorite() {
+  const willBeFavorite = favoriteStore.favoriteCityId !== cityItem.value.id
+  favoriteStore.toggleFavorite(cityItem.value.id)
+  ElMessage.success(
+    willBeFavorite
+      ? `⭐ ${cityItem.value.name} 즐겨찾기 등록`
+      : `☆ ${cityItem.value.name} 즐겨찾기 해제`,
+  )
+}
 </script>
 
 <template>
@@ -82,15 +93,15 @@ const isFavorite = computed(() => favoriteStore.favoriteCityId === cityItem.valu
 
     <BaseDashboardCard v-else>
       <h3>
-        <button class="btn-favorite" @click.stop="favoriteStore.toggleFavorite(cityItem.id)">
+        <button class="btn-favorite" @click.stop="handleToggleFavorite">
           <img :src="isFavorite ? starOnIcon : starOffIcon" class="star-icon" alt="즐겨찾기" />
         </button>
         🏙️ {{ cityItem.name }} 상세 기상관측 정보
       </h3>
       <p>현재 기온: <strong>{{ displayTemp }}{{ configStore.unitSymbol }}</strong></p>
       <p>날씨 상태: <strong>{{ cityItem.status }}</strong></p>
-      <span v-if="cityItem.temp >= 25" class="badge hot">🔥 더움 (25도 이상)</span>
-      <span v-else class="badge cool">❄️ 선선함 (25도 미만)</span>
+      <el-tag v-if="cityItem.temp >= 25" type="danger">🔥 더움 (25도 이상)</el-tag>
+      <el-tag v-else type="info">❄️ 선선함 (25도 미만)</el-tag>
       <p class="sun-line">🌅 일출: <strong>{{ cityItem.sunrise }}</strong></p>
       <p class="sun-line">🌇 일몰: <strong>{{ cityItem.sunset }}</strong></p>
     </BaseDashboardCard>
@@ -103,20 +114,6 @@ const isFavorite = computed(() => favoriteStore.favoriteCityId === cityItem.valu
 .dashboard-wrapper {
   width: 600px;
   margin: 0 auto;
-}
-.badge {
-  display: inline-block;
-  padding: 4px 8px;
-  font-size: 12px;
-  border-radius: 4px;
-  color: #fff;
-  margin-bottom: 8px;
-}
-.hot {
-  background-color: #ff7675;
-}
-.cool {
-  background-color: #74b9ff;
 }
 .sun-line {
   font-size: 15px;
