@@ -2,6 +2,10 @@
 import StoreCounter from '@/components/practices/library/StoreCounter.vue'
 import AxiosWeather from '@/components/practices/library/AxiosWeather.vue'
 import AxiosJson from '@/components/practices/library/AxiosJson.vue'
+import ElementRegisterForm from '@/components/practices/library/ElementRegisterForm.vue'
+import ElementCommerceRate from '@/components/practices/library/ElementCommerceRate.vue'
+import ElementFeedbackProgress from '@/components/practices/library/ElementFeedbackProgress.vue'
+import ViteEnvDemo from '@/components/practices/library/ViteEnvDemo.vue'
 </script>
 
 <template>
@@ -15,5 +19,15 @@ import AxiosJson from '@/components/practices/library/AxiosJson.vue'
     <hr />
     <AxiosWeather />
     <AxiosJson />
+
+    <h2>3. UI Libraries</h2>
+    <hr />
+    <ElementRegisterForm />
+    <ElementCommerceRate />
+    <ElementFeedbackProgress />
+
+    <h2>4. Vite Build & Deployment</h2>
+    <hr />
+    <ViteEnvDemo />
   </div>
 </template>
